@@ -693,11 +693,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj",
-      "projectName": "Domain",
-      "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj",
+      "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/Application.csproj",
+      "projectName": "Application",
+      "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/Application.csproj",
       "packagesPath": "/home/kica/.nuget/packages/",
-      "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/obj/",
+      "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/kica/.config/NuGet/NuGet.Config"

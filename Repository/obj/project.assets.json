@@ -83,7 +83,7 @@
           "lib/netstandard2.0/Microsoft.EntityFrameworkCore.Design.dll": {}
         },
         "build": {
-          "build/netcoreapp2.0/Microsoft.EntityFrameworkCore.Design.props": {}
+          "build/netcoreapp2.0/_._": {}
         }
       },
       "Microsoft.EntityFrameworkCore.Relational/2.2.4": {
@@ -943,6 +943,24 @@
         },
         "compile": {
           "ref/netstandard1.3/System.Threading.Tasks.dll": {}
+        }
+      },
+      "DataAccess/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "Microsoft.EntityFrameworkCore": "2.2.4",
+          "Microsoft.EntityFrameworkCore.Design": "2.2.4",
+          "Microsoft.EntityFrameworkCore.Tools": "2.2.4",
+          "MySql.Data": "8.0.16",
+          "MySql.Data.EntityFrameworkCore": "8.0.16"
+        },
+        "compile": {
+          "bin/placeholder/DataAccess.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/DataAccess.dll": {}
         }
       },
       "Domain/1.0.0": {
@@ -3608,6 +3626,11 @@
         "system.threading.tasks.nuspec"
       ]
     },
+    "DataAccess/1.0.0": {
+      "type": "project",
+      "path": "../DataAccess/DataAccess.csproj",
+      "msbuildProject": "../DataAccess/DataAccess.csproj"
+    },
     "Domain/1.0.0": {
       "type": "project",
       "path": "../Domain/Domain.csproj",
@@ -3616,13 +3639,8 @@
   },
   "projectFileDependencyGroups": {
     ".NETCoreApp,Version=v2.2": [
-      "Domain >= 1.0.0",
-      "Microsoft.EntityFrameworkCore >= 2.2.4",
-      "Microsoft.EntityFrameworkCore.Design >= 2.2.4",
-      "Microsoft.EntityFrameworkCore.Tools >= 2.2.4",
-      "Microsoft.NETCore.App >= 2.2.0",
-      "MySql.Data >= 8.0.16",
-      "MySql.Data.EntityFrameworkCore >= 8.0.16"
+      "DataAccess >= 1.0.0",
+      "Microsoft.NETCore.App >= 2.2.0"
     ]
   },
   "packageFolders": {
@@ -3631,11 +3649,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/DataAccess.csproj",
-      "projectName": "DataAccess",
-      "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/DataAccess.csproj",
+      "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj",
+      "projectName": "Repository",
+      "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj",
       "packagesPath": "/home/kica/.nuget/packages/",
-      "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/obj/",
+      "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/kica/.config/NuGet/NuGet.Config"
@@ -3649,8 +3667,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj": {
-              "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj"
+            "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/DataAccess.csproj": {
+              "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/DataAccess.csproj"
             }
           }
         }
@@ -3664,31 +3682,11 @@
     "frameworks": {
       "netcoreapp2.2": {
         "dependencies": {
-          "Microsoft.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[2.2.4, )"
-          },
-          "Microsoft.EntityFrameworkCore.Design": {
-            "target": "Package",
-            "version": "[2.2.4, )"
-          },
-          "Microsoft.EntityFrameworkCore.Tools": {
-            "target": "Package",
-            "version": "[2.2.4, )"
-          },
           "Microsoft.NETCore.App": {
             "suppressParent": "All",
             "target": "Package",
             "version": "[2.2.0, )",
             "autoReferenced": true
-          },
-          "MySql.Data": {
-            "target": "Package",
-            "version": "[8.0.16, )"
-          },
-          "MySql.Data.EntityFrameworkCore": {
-            "target": "Package",
-            "version": "[8.0.16, )"
           }
         },
         "imports": [
