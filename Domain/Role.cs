@@ -1,6 +1,6 @@
 namespace Domain
 {
-    public class City : BaseEntity
+    public class Role : BaseEntity
     {
         public string Name { get; set; }
     }
