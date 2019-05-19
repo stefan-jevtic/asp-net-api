@@ -1,0 +1,9 @@
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/Application.deps.json
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/Application.dll
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/Application.pdb
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/Debug/netcoreapp2.2/Application.csprojAssemblyReference.cache
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/Debug/netcoreapp2.2/Application.csproj.CoreCompileInputs.cache
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/Debug/netcoreapp2.2/Application.AssemblyInfoInputs.cache
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/Debug/netcoreapp2.2/Application.AssemblyInfo.cs
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/Debug/netcoreapp2.2/Application.dll
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/Debug/netcoreapp2.2/Application.pdb

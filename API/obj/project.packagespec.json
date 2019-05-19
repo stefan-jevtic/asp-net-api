@@ -1,0 +1,61 @@
+﻿{
+  "version": "1.0.0",
+  "restore": {
+    "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/asp-net-api/API/API.csproj",
+    "projectName": "API",
+    "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/API/API.csproj",
+    "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/API/obj/",
+    "projectStyle": "PackageReference",
+    "originalTargetFrameworks": [
+      "netcoreapp2.2"
+    ],
+    "frameworks": {
+      "netcoreapp2.2": {
+        "projectReferences": {
+          "/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/Application.csproj": {
+            "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/Application.csproj"
+          },
+          "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/DataAccess.csproj": {
+            "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/DataAccess.csproj"
+          },
+          "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj": {
+            "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj"
+          }
+        }
+      }
+    },
+    "warningProperties": {
+      "warnAsError": [
+        "NU1605"
+      ]
+    }
+  },
+  "frameworks": {
+    "netcoreapp2.2": {
+      "dependencies": {
+        "Microsoft.AspNetCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.2.3, )",
+          "autoReferenced": true
+        },
+        "Microsoft.AspNetCore.Razor.Design": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.2.0, )"
+        },
+        "Microsoft.NETCore.App": {
+          "suppressParent": "All",
+          "target": "Package",
+          "version": "[2.2.0, )",
+          "autoReferenced": true
+        }
+      },
+      "imports": [
+        "net461"
+      ],
+      "assetTargetFallback": true,
+      "warn": true
+    }
+  }
+}

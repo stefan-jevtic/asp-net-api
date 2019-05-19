@@ -1,0 +1,16 @@
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/Repository.deps.json
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/Repository.dll
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/Repository.pdb
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/DataAccess.dll
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/Domain.dll
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/DataAccess.pdb
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/Domain.pdb
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/Debug/netcoreapp2.2/Repository.csprojAssemblyReference.cache
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/Debug/netcoreapp2.2/Repository.csproj.CoreCompileInputs.cache
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/Debug/netcoreapp2.2/Repository.AssemblyInfoInputs.cache
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/Debug/netcoreapp2.2/Repository.AssemblyInfo.cs
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/Debug/netcoreapp2.2/Repository.csproj.CopyComplete
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/Debug/netcoreapp2.2/Repository.dll
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/Debug/netcoreapp2.2/Repository.pdb
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/Application.dll
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/Application.pdb
