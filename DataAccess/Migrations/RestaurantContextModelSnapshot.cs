@@ -49,8 +49,6 @@ namespace DataAccess.Migrations
                         .ValueGeneratedOnAdd()
                         .HasDefaultValueSql("CURRENT_DATE");
 
-                    b.Property<int>("DishId");
-
                     b.Property<DateTime?>("ModifiedAt");
 
                     b.Property<string>("Name")
@@ -58,8 +56,6 @@ namespace DataAccess.Migrations
                         .HasMaxLength(100);
 
                     b.HasKey("Id");
-
-                    b.HasIndex("DishId");
 
                     b.ToTable("Categories");
                 });
@@ -69,7 +65,7 @@ namespace DataAccess.Migrations
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd();
 
-                    b.Property<int?>("CategoryId");
+                    b.Property<int>("CategoryId");
 
                     b.Property<DateTime>("CreatedAt")
                         .ValueGeneratedOnAdd()
@@ -229,19 +225,12 @@ namespace DataAccess.Migrations
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 
-            modelBuilder.Entity("Domain.Category", b =>
-                {
-                    b.HasOne("Domain.Dish", "Dish")
-                        .WithMany()
-                        .HasForeignKey("DishId")
-                        .OnDelete(DeleteBehavior.Cascade);
-                });
-
             modelBuilder.Entity("Domain.Dish", b =>
                 {
-                    b.HasOne("Domain.Category")
+                    b.HasOne("Domain.Category", "Category")
                         .WithMany("Dishes")
-                        .HasForeignKey("CategoryId");
+                        .HasForeignKey("CategoryId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("Domain.Order", b =>

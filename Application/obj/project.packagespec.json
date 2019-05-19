@@ -11,7 +11,11 @@
     ],
     "frameworks": {
       "netcoreapp2.2": {
-        "projectReferences": {}
+        "projectReferences": {
+          "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj": {
+            "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj"
+          }
+        }
       }
     },
     "warningProperties": {
@@ -28,6 +32,10 @@
           "target": "Package",
           "version": "[2.2.0, )",
           "autoReferenced": true
+        },
+        "System.IdentityModel.Tokens.Jwt": {
+          "target": "Package",
+          "version": "[5.4.0, )"
         }
       },
       "imports": [

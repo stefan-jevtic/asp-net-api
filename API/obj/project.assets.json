@@ -4524,6 +4524,10 @@
       "Application/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v2.2",
+        "dependencies": {
+          "Domain": "1.0.0",
+          "System.IdentityModel.Tokens.Jwt": "5.4.0"
+        },
         "compile": {
           "bin/placeholder/Application.dll": {}
         },

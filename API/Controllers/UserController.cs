@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace API.Controllers
@@ -7,11 +8,12 @@ namespace API.Controllers
     public class UserController : Controller
     {
         // GET
-        [HttpPost]
-        [Route("Register")]
-        public IActionResult Register([FromBody] object data)
+        [Authorize]
+        [HttpGet]
+        [Route("Test")]
+        public IActionResult Register()
         {
-            return Ok(data);
+            return Ok("Proso si");
         }
     }
 }

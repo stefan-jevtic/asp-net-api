@@ -13,9 +13,13 @@ namespace Repository.UnitOfWork
         {
             _context = context;
             User = new UserRepository(_context);
+            Category = new CategoryRepository(_context);
+            Dish = new DishRepository(_context);
         }
 
         public IUserRepository User { get; private set; }
+        public ICategoryRepository Category { get; private set; }
+        public IDishRepository Dish { get; private set; }
 
         public void Save()
         {

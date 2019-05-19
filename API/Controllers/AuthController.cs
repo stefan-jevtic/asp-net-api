@@ -1,15 +1,9 @@
 using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Security.Cryptography;
-using System.Text;
+using System.Linq;
 using Application.DTO;
-using Domain;
-using Microsoft.AspNetCore.Authorization;
+using Application.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using Microsoft.IdentityModel.Tokens;
-using Repository.Repositories;
 using Repository.UnitOfWork;
 
 namespace API.Controllers
@@ -20,11 +14,13 @@ namespace API.Controllers
     {
         private IUnitOfWork _unitOfWork;
         private IConfiguration _config;
+        private AuthMiddleware _middleware;
         
         public AuthController(IUnitOfWork unitOfWork, IConfiguration config)
         {
             _unitOfWork = unitOfWork;
             _config = config;
+            _middleware = new AuthMiddleware(_config);
         }
         
         [HttpPost]
@@ -56,27 +52,21 @@ namespace API.Controllers
                 return BadRequest("Enter valid email!");
             }
 
-            data.Password = ComputeSha256Hash(data.Password);
+            data.Password = _middleware.ComputeSha256Hash(data.Password);
             
             
             _unitOfWork.User.RegisterUser(data);
             _unitOfWork.Save();
             
-            return Ok("User successfully registried!");
-        }
-
-        [Authorize]
-        [HttpGet]
-        [Route("Zasticena")]
-        public IActionResult Zasticena()
-        {
-            return Ok("Proso si");
+            return Ok("User successfully registered!");
         }
 
         [HttpPost]
         [Route("Login")]
         public IActionResult Login([FromBody] AuthDTO data)
         {
+            var token = "No token!";
+            
             if (String.IsNullOrEmpty(data.Email))
             {
                 return BadRequest("Email field is required!");
@@ -91,48 +81,18 @@ namespace API.Controllers
             {
                 return BadRequest("Enter valid email!");
             }
-            
-            
 
-            var token = GenerateJSONWebToken(data);
+            var pass = _middleware.ComputeSha256Hash(data.Password);
+            var user = _unitOfWork.User.Find(u => u.Email == data.Email && u.Password == pass);
             
-            return Ok(token);
+            if (user.Count() == 1)
+            {
+                token = _middleware.GenerateJsonWebToken(user);
+                return Ok(token);
+            }
+
+            return BadRequest("User not found!");
+            
         }
-        
-        static string ComputeSha256Hash(string rawData)  
-        {  
-            // Create a SHA256   
-            using (SHA256 sha256Hash = SHA256.Create())  
-            {  
-                // ComputeHash - returns byte array  
-                byte[] bytes = sha256Hash.ComputeHash(Encoding.UTF8.GetBytes(rawData));  
-  
-                // Convert byte array to a string   
-                StringBuilder builder = new StringBuilder();  
-                for (int i = 0; i < bytes.Length; i++)  
-                {  
-                    builder.Append(bytes[i].ToString("x2"));  
-                }  
-                return builder.ToString();  
-            }  
-        }  
-        private string GenerateJSONWebToken(AuthDTO dto)  
-        {  
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));  
-            var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);  
-            
-            var claims = new[] {  
-                new Claim(JwtRegisteredClaimNames.Email, dto.Email),  
-                new Claim(JwtRegisteredClaimNames.Sid, dto.Password)
-            }; 
-  
-            var token = new JwtSecurityToken(_config["Jwt:Issuer"],  
-                _config["Jwt:Issuer"],  
-                null,  
-                expires: DateTime.Now.AddMinutes(120),  
-                signingCredentials: credentials);  
-  
-            return new JwtSecurityTokenHandler().WriteToken(token);  
-        }  
     }
 }
