@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
 using System.Linq;
 using System.Security.Claims;
@@ -14,14 +13,7 @@ namespace Application.Services
 {
     public class AuthMiddleware
     {
-     
-        private IConfiguration _config;
-        
-        public AuthMiddleware(IConfiguration config)
-        {
-            _config = config;
-        }
-        public string ComputeSha256Hash(string rawData)  
+        public static string ComputeSha256Hash(string rawData)  
         {  
             // Create a SHA256   
             using (SHA256 sha256Hash = SHA256.Create())  
@@ -38,24 +30,39 @@ namespace Application.Services
                 return builder.ToString();  
             }  
         }  
-        public string GenerateJsonWebToken(IEnumerable<User> data)  
+        public static string GenerateJsonWebToken(User data,  IConfiguration config)  
         {  
-            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_config["Jwt:Key"]));  
+            var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(config["Jwt:Key"]));  
             var credentials = new SigningCredentials(securityKey, SecurityAlgorithms.HmacSha256);  
             
             var claims = new[] {  
-                new Claim(JwtRegisteredClaimNames.Email, data.First().Email),  
-                new Claim(JwtRegisteredClaimNames.GivenName, data.First().FirstName),
-                new Claim(JwtRegisteredClaimNames.FamilyName, data.First().LastName)
+                new Claim(JwtRegisteredClaimNames.Sid, data.Id.ToString()), 
+                new Claim(JwtRegisteredClaimNames.Email, data.Email),  
+                new Claim(JwtRegisteredClaimNames.GivenName, data.FirstName),
+                new Claim(JwtRegisteredClaimNames.FamilyName, data.LastName)
             }; 
   
-            var token = new JwtSecurityToken(_config["Jwt:Issuer"],  
-                _config["Jwt:Issuer"],  
-                null,  
+            var token = new JwtSecurityToken(config["Jwt:Issuer"],  
+                config["Jwt:Issuer"],  
+                claims,  
                 expires: DateTime.Now.AddMinutes(120),  
                 signingCredentials: credentials);  
   
             return new JwtSecurityTokenHandler().WriteToken(token);  
-        }  
+        }
+
+        public static int GetUserId(ClaimsIdentity claimsIdentity)
+        {
+            var userId = claimsIdentity.Claims.Where(x => x.Type == "sid").FirstOrDefault().Value;
+            /*foreach (var claim in claimsIdentity.Claims)
+            {
+                if (claim.Type.IndexOf("emailaddress") != -1)
+                {
+                    Console.WriteLine(claim.Value);
+                }
+                Console.WriteLine(claim.Type + ":" + claim.Value);
+            }*/
+            return Int32.Parse(userId);
+        }
     }
 }

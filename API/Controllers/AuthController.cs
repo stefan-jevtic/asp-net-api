@@ -1,7 +1,10 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using Application.DTO;
 using Application.Services;
+using Domain;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Repository.UnitOfWork;
@@ -14,13 +17,10 @@ namespace API.Controllers
     {
         private IUnitOfWork _unitOfWork;
         private IConfiguration _config;
-        private AuthMiddleware _middleware;
-        
         public AuthController(IUnitOfWork unitOfWork, IConfiguration config)
         {
             _unitOfWork = unitOfWork;
             _config = config;
-            _middleware = new AuthMiddleware(_config);
         }
         
         [HttpPost]
@@ -52,7 +52,7 @@ namespace API.Controllers
                 return BadRequest("Enter valid email!");
             }
 
-            data.Password = _middleware.ComputeSha256Hash(data.Password);
+            data.Password = AuthMiddleware.ComputeSha256Hash(data.Password);
             
             
             _unitOfWork.User.RegisterUser(data);
@@ -82,12 +82,12 @@ namespace API.Controllers
                 return BadRequest("Enter valid email!");
             }
 
-            var pass = _middleware.ComputeSha256Hash(data.Password);
-            var user = _unitOfWork.User.Find(u => u.Email == data.Email && u.Password == pass);
+            var pass = AuthMiddleware.ComputeSha256Hash(data.Password);
+            var user = _unitOfWork.User.Find(u => u.Email == data.Email && u.Password == pass).FirstOrDefault();
             
-            if (user.Count() == 1)
+            if (user != null)
             {
-                token = _middleware.GenerateJsonWebToken(user);
+                token = AuthMiddleware.GenerateJsonWebToken(user, _config);
                 return Ok(token);
             }
 
