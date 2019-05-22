@@ -15,11 +15,15 @@ namespace Repository.UnitOfWork
             User = new UserRepository(_context);
             Category = new CategoryRepository(_context);
             Dish = new DishRepository(_context);
+            Wallet = new WalletRepository(_context);
+            Transaction = new TransactionRepository(_context);
         }
 
         public IUserRepository User { get; private set; }
         public ICategoryRepository Category { get; private set; }
         public IDishRepository Dish { get; private set; }
+        public IWalletRepository Wallet { get; }
+        public ITransactionRepository Transaction { get; }
 
         public void Save()
         {

@@ -55,7 +55,8 @@ namespace API.Controllers
             data.Password = AuthMiddleware.ComputeSha256Hash(data.Password);
             
             
-            _unitOfWork.User.RegisterUser(data);
+            var userId = _unitOfWork.User.RegisterUser(data);
+            _unitOfWork.Wallet.CreateWallet(userId);
             _unitOfWork.Save();
             
             return Ok("User successfully registered!");
@@ -83,7 +84,7 @@ namespace API.Controllers
             }
 
             var pass = AuthMiddleware.ComputeSha256Hash(data.Password);
-            var user = _unitOfWork.User.Find(u => u.Email == data.Email && u.Password == pass).FirstOrDefault();
+            var user = _unitOfWork.User.Find(u => u.Email == data.Email && u.Password == pass && u.IsDeleted == 0).FirstOrDefault();
             
             if (user != null)
             {
