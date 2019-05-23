@@ -20,9 +20,9 @@ namespace Repository.Repositories
             return _context.Set<TEntity>().Find(id);
         }
 
-        public IEnumerable<TEntity> GetAll()
+        public IQueryable<TEntity> GetAll()
         {
-            return _context.Set<TEntity>().ToList();
+            return _context.Set<TEntity>();
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)

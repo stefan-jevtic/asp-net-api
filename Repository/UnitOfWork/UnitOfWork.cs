@@ -17,12 +17,14 @@ namespace Repository.UnitOfWork
             Dish = new DishRepository(_context);
             Wallet = new WalletRepository(_context);
             Transaction = new TransactionRepository(_context);
+            Cart = new CartRepository(_context);
         }
 
         public IUserRepository User { get; private set; }
         public ICategoryRepository Category { get; private set; }
         public IDishRepository Dish { get; private set; }
         public IWalletRepository Wallet { get; }
+        public ICartRepository Cart { get; }
         public ITransactionRepository Transaction { get; }
 
         public void Save()

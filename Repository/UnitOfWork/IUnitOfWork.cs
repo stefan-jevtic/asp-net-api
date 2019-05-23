@@ -9,6 +9,7 @@ namespace Repository.UnitOfWork
         ICategoryRepository Category { get; }
         IDishRepository Dish { get; }
         IWalletRepository Wallet { get; }
+        ICartRepository Cart { get; }
         ITransactionRepository Transaction { get; }
         void Save();
     }
