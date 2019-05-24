@@ -38,7 +38,7 @@ namespace API.Controllers
             var userId = AuthMiddleware.GetUserId(GetClaim());
             var balance = _unitOfWork.Wallet.InsertMoney(dto.Amount, userId);
             var wallet = _unitOfWork.Wallet.Find(w => w.UserId == userId).FirstOrDefault();
-            _unitOfWork.Transaction.CreateTransaction(wallet.Id, dto.Amount);
+            _unitOfWork.Transaction.CreateTransaction(wallet.Id, dto.Amount, "Input");
             _unitOfWork.Save();
             return Ok("Your current balance is: " + balance);
         }

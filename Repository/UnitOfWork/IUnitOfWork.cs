@@ -11,6 +11,7 @@ namespace Repository.UnitOfWork
         IWalletRepository Wallet { get; }
         ICartRepository Cart { get; }
         ITransactionRepository Transaction { get; }
+        IOrderRepository Order { get; }
         void Save();
     }
 }

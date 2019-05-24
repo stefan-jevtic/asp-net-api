@@ -12,13 +12,13 @@ namespace Repository.Repositories
         {
         }
 
-        public void CreateTransaction(int walletId, double amount)
+        public void CreateTransaction(int walletId, double amount, string type)
         {
             var transaction = new Transaction()
             {
                 Amount = amount,
                 CreatedAt = DateTime.Now,
-                Type = "Input",
+                Type = type,
                 WalletId = walletId
             };
 

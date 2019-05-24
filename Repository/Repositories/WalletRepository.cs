@@ -33,5 +33,12 @@ namespace Repository.Repositories
             wallet.Balance += amount;
             return wallet.Balance;
         }
+        
+        public double TakeOfMoney(double amount, int id)
+        {
+            var wallet = Find(w => w.UserId == id).FirstOrDefault();
+            wallet.Balance -= amount;
+            return wallet.Balance;
+        }
     }
 }

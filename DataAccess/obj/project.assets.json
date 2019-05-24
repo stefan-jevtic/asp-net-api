@@ -3638,7 +3638,7 @@
       "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "/home/kica/.nuget/NuGet/NuGet.Config"
+        "/home/kica/.config/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "netcoreapp2.2"

@@ -18,6 +18,7 @@ namespace Repository.UnitOfWork
             Wallet = new WalletRepository(_context);
             Transaction = new TransactionRepository(_context);
             Cart = new CartRepository(_context);
+            Order = new OrderRepository(_context);
         }
 
         public IUserRepository User { get; private set; }
@@ -26,6 +27,7 @@ namespace Repository.UnitOfWork
         public IWalletRepository Wallet { get; }
         public ICartRepository Cart { get; }
         public ITransactionRepository Transaction { get; }
+        public IOrderRepository Order { get; }
 
         public void Save()
         {
