@@ -58,6 +58,10 @@ namespace Repository.Repositories
             {
                 user.Password = AuthMiddleware.ComputeSha256Hash(dto.Password);
             }
+            if (dto.IsDeleted == 0 || dto.IsDeleted == 1)
+            {
+                user.IsDeleted = dto.IsDeleted;
+            }
             user.ModifiedAt = DateTime.Now;
         }
 
