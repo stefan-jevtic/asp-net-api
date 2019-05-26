@@ -30,6 +30,11 @@ namespace Repository.Repositories
             return _context.Set<TEntity>().Where(predicate);
         }
 
+        public IQueryable<TEntity> FindByExp(Expression<Func<TEntity, bool>> predicate)
+        {
+            return _context.Set<TEntity>().Where(predicate);
+        }
+
         public void Add(TEntity entity)
         {
             _context.Set<TEntity>().Add(entity);

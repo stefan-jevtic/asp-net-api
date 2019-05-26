@@ -10,6 +10,7 @@ namespace Repository
         TEntity Get(int id);
         IQueryable<TEntity> GetAll();
         IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
+        IQueryable<TEntity> FindByExp(Expression<Func<TEntity, bool>> predicate);
         void Add(TEntity entity);
         void Remove(TEntity entity);
     }

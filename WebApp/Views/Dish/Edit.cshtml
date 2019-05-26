@@ -1,0 +1,54 @@
+@model Application.DTO.DishCategoryDTO
+
+<h4>Dish Edit</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Dish.Id" class="control-label"></label>
+                <input asp-for="Dish.Id" class="form-control" disabled/>
+                <span asp-validation-for="Dish.Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.Title" class="control-label"></label>
+                <input asp-for="Dish.Title" class="form-control" />
+                <span asp-validation-for="Dish.Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.Ingredients" class="control-label"></label>
+                <input asp-for="Dish.Ingredients" class="form-control" />
+                <span asp-validation-for="Dish.Ingredients" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.Serving" class="control-label"></label>
+                <input asp-for="Dish.Serving" class="form-control" />
+                <span asp-validation-for="Dish.Serving" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.Price" class="control-label"></label>
+                <input asp-for="Dish.Price" class="form-control" />
+                <span asp-validation-for="Dish.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Dish.CategoryId" class="control-label"></label>
+                <select asp-for="Dish.CategoryId" class="form-control">
+                    @foreach (var cat in Model.Category)
+                    {
+                        <option value=@cat.Id>@cat.Name</option>
+                    }
+                </select>
+            </div>
+           
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
