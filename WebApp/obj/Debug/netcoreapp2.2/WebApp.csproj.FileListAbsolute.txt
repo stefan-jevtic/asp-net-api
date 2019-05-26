@@ -44,3 +44,8 @@
 /home/kica/harddisk/c/RiderProjects/asp-net-api/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/User/Details.g.cshtml.cs
 /home/kica/harddisk/c/RiderProjects/asp-net-api/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/User/Edit.g.cshtml.cs
 /home/kica/harddisk/c/RiderProjects/asp-net-api/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/User/Index.g.cshtml.cs
+/home/kica/harddisk/c/RiderProjects/asp-net-api/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/Category/Create.g.cshtml.cs
+/home/kica/harddisk/c/RiderProjects/asp-net-api/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/Category/Delete.g.cshtml.cs
+/home/kica/harddisk/c/RiderProjects/asp-net-api/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/Category/Details.g.cshtml.cs
+/home/kica/harddisk/c/RiderProjects/asp-net-api/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/Category/Edit.g.cshtml.cs
+/home/kica/harddisk/c/RiderProjects/asp-net-api/WebApp/obj/Debug/netcoreapp2.2/Razor/Views/Category/Index.g.cshtml.cs
