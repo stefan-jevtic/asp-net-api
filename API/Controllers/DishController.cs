@@ -1,6 +1,8 @@
+using System;
 using System.Linq;
 using System.Security.Claims;
 using Application.DTO;
+using Application.Searches;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository.UnitOfWork;
@@ -21,9 +23,9 @@ namespace API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] DishSearch search)
         {
-            var dishes = _unitOfWork.Dish.GetAll().Select(d => new DishDTO()
+            /*var dishes = _unitOfWork.Dish.GetAll().Select(d => new DishDTO()
             {
                 Id = d.Id,
                 Title = d.Title,
@@ -31,8 +33,8 @@ namespace API.Controllers
                 Serving = d.Serving,
                 Price = d.Price,
                 Name = d.Category.Name
-            }).OrderBy(d => d.Name).ToList();
-            
+            }).OrderBy(d => d.Name).ToList();*/
+            var dishes = _unitOfWork.Dish.Execute(search);
             return Ok(dishes);
         }
         

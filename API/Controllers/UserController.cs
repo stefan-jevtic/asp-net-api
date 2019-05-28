@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Security.Claims;
 using Application.DTO;
+using Application.Searches;
 using Application.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -21,17 +22,12 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("Transactions")]
-        public IActionResult Transactions()
+        public IActionResult Transactions([FromQuery] TransactionSearch search)
         {
             var userId = AuthMiddleware.GetUserId(GetClaim());
             var wallet = _unitOfWork.Wallet.Find(w => w.UserId == userId).FirstOrDefault();
-            var transactions = _unitOfWork.Transaction.Find(t => t.WalletId == wallet.Id).Select(t => new TransactionDTO()
-            {
-                Id = t.Id,
-                Amount = t.Amount,
-                Type = t.Type,
-                CreatedAt = t.CreatedAt
-            });
+            search.WalletId = wallet.Id;
+            var transactions = _unitOfWork.Transaction.Execute(search);
             return Ok(transactions);
         }
         
