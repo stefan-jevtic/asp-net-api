@@ -3,6 +3,7 @@ using System.Security.Claims;
 using Application.DTO;
 using Application.Searches;
 using Application.Services;
+using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository.UnitOfWork;
@@ -14,11 +15,11 @@ namespace API.Controllers
     [Authorize]
     public class OrderController : Controller
     {
-        private IUnitOfWork _unitOfWork;
+        private IOrderService _service;
         
-        public OrderController(IUnitOfWork unitOfWork)
+        public OrderController(IOrderService service)
         {
-            _unitOfWork = unitOfWork;
+            _service = service;
         }
         
         [HttpGet]
@@ -27,7 +28,7 @@ namespace API.Controllers
             var userId = AuthMiddleware.GetUserId(GetClaim());
             search.UserId = userId;
             
-            var orders = _unitOfWork.Order.Execute(search);
+            var orders = _service.Execute(search);
             
             if (orders == null)
             {

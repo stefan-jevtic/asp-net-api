@@ -17,23 +17,6 @@ namespace Repository.Repositories
             get { return _context as RestaurantContext; }
         }
 
-        public void CreateWallet(int id)
-        {
-            var wallet = new Wallet()
-            {
-                Balance = 0,
-                UserId = id
-            };
-            _context.Add(wallet);
-        }
-
-        public double InsertMoney(double amount, int id)
-        {
-            var wallet = Find(w => w.UserId == id).FirstOrDefault();
-            wallet.Balance += amount;
-            return wallet.Balance;
-        }
-        
         public double TakeOfMoney(double amount, int id)
         {
             var wallet = Find(w => w.UserId == id).FirstOrDefault();

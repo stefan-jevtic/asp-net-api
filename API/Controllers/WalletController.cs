@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Claims;
 using Application.DTO;
 using Application.Services;
+using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository.UnitOfWork;
@@ -14,32 +15,25 @@ namespace API.Controllers
     [Authorize]
     public class WalletController : Controller
     {
-        private IUnitOfWork _unitOfWork;
-        public WalletController(IUnitOfWork unitOfWork)
+        private IWalletService _service;
+        public WalletController(IWalletService service)
         {
-            _unitOfWork = unitOfWork;
+            _service = service;
         }
         
         [HttpGet]
         public IActionResult Get()
         {
             var userId = AuthMiddleware.GetUserId(GetClaim());
-            var wallet = _unitOfWork.Wallet.Find(w => w.UserId == userId).FirstOrDefault();
-            return Ok("Your balance is: " + wallet.Balance);
+            var wallet = _service.GetById(userId);
+            return Ok("Your balance is: " + wallet.Amount);
         }
 
         [HttpPost]
         public IActionResult Post([FromBody] WalletDTO dto)
         {
-            if (Double.IsNaN(dto.Amount) || dto.Amount < 1)
-            {
-                return BadRequest("Please insert number positive number greater then 1!");
-            }
             var userId = AuthMiddleware.GetUserId(GetClaim());
-            var balance = _unitOfWork.Wallet.InsertMoney(dto.Amount, userId);
-            var wallet = _unitOfWork.Wallet.Find(w => w.UserId == userId).FirstOrDefault();
-            _unitOfWork.Transaction.CreateTransaction(wallet.Id, dto.Amount, "Input");
-            _unitOfWork.Save();
+            var balance = _service.InsertMoney(dto, userId);
             return Ok("Your current balance is: " + balance);
         }
         

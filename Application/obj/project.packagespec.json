@@ -17,6 +17,9 @@
         "projectReferences": {
           "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj": {
             "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj"
+          },
+          "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj": {
+            "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj"
           }
         }
       }

@@ -8,5 +8,6 @@ namespace Application.DTO
         public DateTime CreatedAt { get; set; }
         public double Amount { get; set; }
         public string Type { get; set; }
+        public int WalletId { get; set; }
     }
 }

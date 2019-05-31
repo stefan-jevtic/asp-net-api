@@ -3,6 +3,7 @@ using System.Linq;
 using System.Security.Claims;
 using Application.DTO;
 using Application.Searches;
+using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Repository.UnitOfWork;
@@ -14,27 +15,18 @@ namespace API.Controllers
     [Authorize]
     public class DishController : Controller
     {
-        private IUnitOfWork _unitOfWork;
-
-        public DishController(IUnitOfWork unitOfWork)
+        private IDishService _service;
+        
+        public DishController(IDishService service)
         {
-            _unitOfWork = unitOfWork;
+            _service = service;
         }
 
         [HttpGet]
         [AllowAnonymous]
         public IActionResult Get([FromQuery] DishSearch search)
         {
-            /*var dishes = _unitOfWork.Dish.GetAll().Select(d => new DishDTO()
-            {
-                Id = d.Id,
-                Title = d.Title,
-                Ingredients = d.Ingredients,
-                Serving = d.Serving,
-                Price = d.Price,
-                Name = d.Category.Name
-            }).OrderBy(d => d.Name).ToList();*/
-            var dishes = _unitOfWork.Dish.Execute(search);
+            var dishes = _service.Execute(search);
             return Ok(dishes);
         }
         

@@ -1,4 +1,4 @@
-namespace Repository
+namespace Application
 {
     public interface ICommand<TRequest, TResult>
     {

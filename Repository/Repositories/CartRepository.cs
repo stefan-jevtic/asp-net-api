@@ -16,28 +16,5 @@ namespace Repository.Repositories
         {
             get { return _context as RestaurantContext; }
         }
-
-        public void InsertInCart(int userId, int dishId, int quantity, double sum)
-        {
-            var cart = new Cart()
-            {
-                UserId = userId,
-                DishId = dishId,
-                Quantity = quantity,
-                Sum = sum
-            };
-            _context.Add(cart);
-        }
-
-        public int DeleteFromCart(int userId, int id)
-        {
-            var cart = Find(c => c.Id == id && c.UserId == userId).FirstOrDefault();
-            if (cart == null)
-            {
-                return 0;
-            }
-            _context.Remove(cart);
-            return 1;
-        }
     }
 }
