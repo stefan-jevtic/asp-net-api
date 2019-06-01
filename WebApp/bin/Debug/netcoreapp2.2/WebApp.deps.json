@@ -3200,6 +3200,7 @@
       "Application/1.0.0": {
         "dependencies": {
           "Domain": "1.0.0",
+          "Repository": "1.0.0",
           "System.IdentityModel.Tokens.Jwt": "5.4.0"
         },
         "runtime": {
@@ -3235,7 +3236,6 @@
       },
       "Repository/1.0.0": {
         "dependencies": {
-          "Application": "1.0.0",
           "DataAccess": "1.0.0"
         },
         "runtime": {

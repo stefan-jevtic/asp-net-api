@@ -1,3 +1,4 @@
+using System;
 using Application.DTO;
 using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
@@ -21,16 +22,30 @@ namespace API.Controllers
         [Route("Register")]
         public IActionResult Register([FromBody] AuthDTO data)
         {
-            _service.Insert(data);
-            return Ok("User successfully registered!");
+            try
+            {
+                _service.Insert(data);
+                return Ok("User successfully registered!");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost]
         [Route("Login")]
         public IActionResult Login([FromBody] AuthDTO data)
         {
-            var token = _service.Login(data, _config);
-            return Ok(token);
+            try
+            {
+                var token = _service.Login(data, _config);
+                return Ok(token);
+            }
+            catch (Exception e)
+            {
+                return Unauthorized("User not found!");
+            }
         }
     }
 }

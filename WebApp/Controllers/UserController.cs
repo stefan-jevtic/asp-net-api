@@ -1,45 +1,31 @@
 using System;
-using System.Linq;
 using Application.DTO;
 using Application.Services;
+using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Repository.UnitOfWork;
 
 namespace WebApp.Controllers
 {
     public class UserController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IUserService _service;
 
-        public UserController(IUnitOfWork unitOfWork)
+        public UserController(IUserService service)
         {
-            _unitOfWork = unitOfWork;
+            _service = service;
         }
         // GET: User
         public ActionResult Index()
         {
-            var users = _unitOfWork.User.GetAll().Select(u => new UserDTO {
-                    Id = u.Id,
-                    FirstName = u.FirstName,
-                    LastName = u.LastName,
-                    Email = u.Email,
-                    CreatedAt = u.CreatedAt,
-                    IsDeleted = u.IsDeleted
-            });
+            var users = _service.GetAll();
             return View(users);
         }
 
         // GET: User/Details/5
         public ActionResult Details(int id)
         {
-            var user = _unitOfWork.User.Find(u => u.Id == id).Select(u => new UserDTO()
-            {
-                Id = u.Id,
-                FirstName = u.FirstName,
-                LastName = u.LastName,
-                Email = u.Email
-            }).FirstOrDefault();
+            var user = _service.GetById(id);
             return View(user);
         }
 
@@ -63,8 +49,7 @@ namespace WebApp.Controllers
                     Email = collection["Email"],
                     Password = AuthMiddleware.ComputeSha256Hash(collection["Password"]),
                 };
-                _unitOfWork.User.RegisterUser(dto);
-                _unitOfWork.Save();
+                _service.Insert(dto);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -77,14 +62,7 @@ namespace WebApp.Controllers
         // GET: User/Edit/5
         public ActionResult Edit(int id)
         {
-            var user = _unitOfWork.User.Find(u => u.Id == id).Select(u => new UserDTO()
-            {
-                Id = u.Id,
-                FirstName = u.FirstName,
-                LastName = u.LastName,
-                Email = u.Email,
-                IsDeleted = u.IsDeleted
-            }).FirstOrDefault();
+            var user = _service.GetById(id);
             return View(user);
         }
 
@@ -103,8 +81,7 @@ namespace WebApp.Controllers
                     Email = collection["Email"],
                     IsDeleted = Int32.Parse(collection["IsDeleted"])
                 };
-                _unitOfWork.User.UpdateUser(dto, id);
-                _unitOfWork.Save();
+                _service.Update(dto, id);
                 return RedirectToAction(nameof(Index));
             }
             catch(Exception e)
@@ -117,13 +94,7 @@ namespace WebApp.Controllers
         // GET: User/Delete/5
         public ActionResult Delete(int id)
         {
-            var user = _unitOfWork.User.Find(u => u.Id == id).Select(u => new UserDTO()
-            {
-                Id = u.Id,
-                FirstName = u.FirstName,
-                LastName = u.LastName,
-                Email = u.Email
-            }).FirstOrDefault();
+            var user = _service.GetById(id);
             return View(user);
         }
 
@@ -134,9 +105,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                _unitOfWork.User.SoftRemove(id);
-                _unitOfWork.Save();
-
+                _service.DeleteById(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

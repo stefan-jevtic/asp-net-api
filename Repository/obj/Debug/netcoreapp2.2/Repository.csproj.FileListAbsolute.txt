@@ -12,5 +12,3 @@
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/Debug/netcoreapp2.2/Repository.csproj.CopyComplete
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/Debug/netcoreapp2.2/Repository.dll
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/Debug/netcoreapp2.2/Repository.pdb
-/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/Application.dll
-/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/bin/Debug/netcoreapp2.2/Application.pdb

@@ -69,6 +69,8 @@ namespace Application.Services.Implementation
 
         public void Update(AuthDTO dto, int id)
         {
+            // todo: URADITI PROVERU SLICNO KAO I ZA REGISTRACIJU, MOZE DUNESE STA OCE SAD!!!11
+            
             var user = _unitOfWork.User.Get(id);
             
             if (!String.IsNullOrEmpty(dto.Email))
@@ -110,12 +112,26 @@ namespace Application.Services.Implementation
 
         public AuthDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            var user = _unitOfWork.User.Find(u => u.Id == id).Select(u => new AuthDTO()
+            {
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Email = u.Email
+            }).FirstOrDefault();
+            return user;
         }
 
         public IQueryable<AuthDTO> GetAll()
         {
-            throw new NotImplementedException();
+            var users = _unitOfWork.User.GetAll().Select(u => new AuthDTO() {
+                Id = u.Id,
+                FirstName = u.FirstName,
+                LastName = u.LastName,
+                Email = u.Email,
+                IsDeleted = u.IsDeleted
+            });
+            return users;
         }
 
         public PageResponse<TransactionDTO> Execute(TransactionSearch request)

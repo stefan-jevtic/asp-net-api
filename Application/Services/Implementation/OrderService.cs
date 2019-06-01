@@ -82,7 +82,8 @@ namespace Application.Services.Implementation
                 {
                     Id = o.Id,
                     Total = o.Total,
-                    Description = o.Description
+                    Description = o.Description,
+                    CreatedAt = o.CreatedAt
                 })
             };
             return response;

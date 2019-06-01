@@ -26,8 +26,15 @@ namespace API.Controllers
         public IActionResult Get()
         {
             var userId = AuthMiddleware.GetUserId(GetClaim());
-            var items = _service.ListCart(userId);
-            return Ok(items);
+            try
+            {
+                var items = _service.ListCart(userId);
+                return Ok(items);
+            }
+            catch (Exception e)
+            {
+                return Ok(e.Message);
+            }
         }
         
         [HttpPost]
@@ -35,8 +42,15 @@ namespace API.Controllers
         {
             var userId = AuthMiddleware.GetUserId(GetClaim());
             dto.UserId = userId;
-            _service.Insert(dto);
-            return Ok("Successfully added to cart!");
+            try
+            {
+                _service.Insert(dto);
+                return Ok("Successfully added to cart!");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost]
@@ -44,10 +58,18 @@ namespace API.Controllers
         public IActionResult Submit()
         {
             var userId = AuthMiddleware.GetUserId(GetClaim());
-            _service.Purchase(userId);
-            return Ok("Your order successfully purchased!");
+            try
+            {
+                _service.Purchase(userId);
+                return Ok("Your order successfully purchased!");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
+        [HttpDelete]
         public IActionResult Delete([FromBody] CartDTO dto)
         {
             var userId = AuthMiddleware.GetUserId(GetClaim());

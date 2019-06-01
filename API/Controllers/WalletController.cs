@@ -33,8 +33,16 @@ namespace API.Controllers
         public IActionResult Post([FromBody] WalletDTO dto)
         {
             var userId = AuthMiddleware.GetUserId(GetClaim());
-            var balance = _service.InsertMoney(dto, userId);
-            return Ok("Your current balance is: " + balance);
+            try
+            {
+                var balance = _service.InsertMoney(dto, userId);
+                return Ok("Your current balance is: " + balance);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            
         }
         
         ClaimsIdentity GetClaim()

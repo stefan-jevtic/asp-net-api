@@ -8,7 +8,9 @@
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/Debug/netcoreapp2.2/Application.dll
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/Debug/netcoreapp2.2/Application.pdb
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/Domain.dll
-/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/Microsoft.Extensions.Configuration.Abstractions.dll
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/Domain.pdb
-/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/Microsoft.Extensions.Configuration.Abstractions.xml
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/Debug/netcoreapp2.2/Application.csproj.CopyComplete
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/DataAccess.dll
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/Repository.dll
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/Repository.pdb
+/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/bin/Debug/netcoreapp2.2/DataAccess.pdb

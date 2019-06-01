@@ -1,3 +1,4 @@
+using System.Linq;
 using Application.DTO;
 using Application.Responses;
 using Application.Searches;

@@ -1,54 +1,39 @@
 using System;
-using System.Linq;
 using Application.DTO;
-using Application.Services;
+using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Repository.UnitOfWork;
 
 namespace WebApp.Controllers
 {
     public class DishController : Controller
     {
-        private readonly IUnitOfWork _unitOfWork;
+        private readonly IDishService _service;
+        private readonly ICategoryService _categoryService;
 
-        public DishController(IUnitOfWork unitOfWork)
+        public DishController(IDishService service, ICategoryService categoryService)
         {
-            _unitOfWork = unitOfWork;
+            _service = service;
+            _categoryService = categoryService;
         }
         // GET: Dish
         public ActionResult Index()
         {
-            var dishes = _unitOfWork.Dish.GetAll().Select(d => new DishDTO() {
-                    Id = d.Id,
-                    Title = d.Title,
-                    Ingredients = d.Ingredients,
-                    Serving = d.Serving,
-                    Price = d.Price,
-                    Name = d.Category.Name
-            });
+            var dishes = _service.GetAll();
             return View(dishes);
         }
 
         // GET: Dish/Details/5
         public ActionResult Details(int id)
         {
-            var dish = _unitOfWork.Dish.FindByExp(d => d.Id == id).Select(d => new DishDTO()
-            {
-                Id = d.Id,
-                Title = d.Title,
-                Ingredients = d.Ingredients,
-                Serving = d.Serving,
-                Price = d.Price,
-                Name = d.Category.Name
-            }).FirstOrDefault();
+            var dish = _service.GetById(id);
             return View(dish);
         }
 
         // GET: Dish/Create
         public ActionResult Create()
         {
-            var categories = _unitOfWork.Category.GetAll();
+            var categories = _categoryService.GetAll();
             var data = new DishCategoryDTO()
             {
                 Category = categories
@@ -71,9 +56,7 @@ namespace WebApp.Controllers
                     Price = Double.Parse(collection["Dish.Price"]),
                     CategoryId = Int32.Parse(collection["Dish.CategoryId"]),
                 };
-                _unitOfWork.Dish.InsertDish(dto);
-                _unitOfWork.Save();
-
+                _service.Insert(dto);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -85,16 +68,8 @@ namespace WebApp.Controllers
         // GET: Dish/Edit/5
         public ActionResult Edit(int id)
         {
-            var dish = _unitOfWork.Dish.FindByExp(d => d.Id == id).Select(d => new DishDTO()
-            {
-                Id = d.Id,
-                Title = d.Title,
-                Ingredients = d.Ingredients,
-                Serving = d.Serving,
-                Price = d.Price,
-                CategoryId = d.Category.Id
-            }).FirstOrDefault();
-            var categories = _unitOfWork.Category.GetAll();
+            var dish = _service.GetById(id);
+            var categories = _categoryService.GetAll();
             var data = new DishCategoryDTO()
             {
                 Dish = dish,
@@ -118,8 +93,7 @@ namespace WebApp.Controllers
                     Price = Double.Parse(collection["Dish.Price"]),
                     CategoryId = Int32.Parse(collection["Dish.CategoryId"]),
                 };
-                _unitOfWork.Dish.UpdateDish(dto, id);
-                _unitOfWork.Save();
+                _service.Update(dto, id);
                 return RedirectToAction(nameof(Index));
             }
             catch(Exception e)
@@ -132,15 +106,7 @@ namespace WebApp.Controllers
         // GET: Dish/Delete/5
         public ActionResult Delete(int id)
         {
-            var dish = _unitOfWork.Dish.FindByExp(d => d.Id == id).Select(d => new DishDTO()
-            {
-                Id = d.Id,
-                Title = d.Title,
-                Ingredients = d.Ingredients,
-                Serving = d.Serving,
-                Price = d.Price,
-                Name = d.Category.Name
-            }).FirstOrDefault();
+            var dish = _service.GetById(id);
             return View(dish);
         }
 
@@ -151,9 +117,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                _unitOfWork.Dish.RemoveDish(id);
-                _unitOfWork.Save();
-
+                _service.DeleteById(id);
                 return RedirectToAction(nameof(Index));
             }
             catch

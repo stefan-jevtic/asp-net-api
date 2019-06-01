@@ -60,12 +60,29 @@ namespace Application.Services.Implementation
 
         public DishDTO GetById(int id)
         {
-            throw new System.NotImplementedException();
+            var dish = _unitOfWork.Dish.FindByExp(d => d.Id == id).Select(d => new DishDTO()
+            {
+                Id = d.Id,
+                Title = d.Title,
+                Ingredients = d.Ingredients,
+                Serving = d.Serving,
+                Price = d.Price,
+                Name = d.Category.Name
+            }).FirstOrDefault();
+            return dish;
         }
 
         public IQueryable<DishDTO> GetAll()
         {
-            throw new System.NotImplementedException();
+            var dishes = _unitOfWork.Dish.GetAll().Select(d => new DishDTO() {
+                Id = d.Id,
+                Title = d.Title,
+                Ingredients = d.Ingredients,
+                Serving = d.Serving,
+                Price = d.Price,
+                Name = d.Category.Name
+            });
+            return dishes;
         }
 
         public PageResponse<DishDTO> Execute(DishSearch request)
@@ -105,6 +122,8 @@ namespace Application.Services.Implementation
                     Id = d.Id,
                     Title = d.Title,
                     Price = d.Price,
+                    Ingredients = d.Ingredients,
+                    Serving = d.Serving,
                     Name = d.Category.Name
                 })
             };

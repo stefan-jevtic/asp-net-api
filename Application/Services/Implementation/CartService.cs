@@ -77,6 +77,7 @@ namespace Application.Services.Implementation
         {
             var orders = _unitOfWork.Cart.FindByExp(c => c.UserId == id).Select(c => new CartDTO()
             {
+                Id = c.Id,
                 DishName = c.Dish.Title,
                 DishPrice = c.Dish.Price,
                 Quantity = c.Quantity,

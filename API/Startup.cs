@@ -1,4 +1,6 @@
 ﻿using System.Text;
+using Application.Services.Implementation;
+using Application.Services.Interfaces;
 using DataAccess;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
@@ -26,7 +28,12 @@ namespace API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<RestaurantContext>();
-            services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserService, UserService>();
+            services.AddTransient<ICartService, CartService>();
+            services.AddTransient<IDishService, DishService>();
+            services.AddTransient<IOrderService, OrderService>();
+            services.AddTransient<ITransactionService, TransactionService>();
+            services.AddTransient<IWalletService, WalletService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)  

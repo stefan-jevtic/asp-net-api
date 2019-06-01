@@ -7,6 +7,6 @@ namespace Application.DTO
     public class DishCategoryDTO
     {
         public DishDTO Dish { get; set; }
-        public IQueryable<Category> Category { get; set; }
+        public IQueryable<CategoryDTO> Category { get; set; }
     }
 }
