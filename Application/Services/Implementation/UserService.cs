@@ -71,11 +71,9 @@ namespace Application.Services.Implementation
 
         public void Update(AuthDTO dto, int id)
         {
-            // todo: URADITI PROVERU SLICNO KAO I ZA REGISTRACIJU, MOZE DUNESE STA OCE SAD!!!11
-            
             var user = _unitOfWork.User.Get(id);
             
-            if (!String.IsNullOrEmpty(dto.Email))
+            if (!String.IsNullOrEmpty(dto.Email) && dto.Email.Contains("@"))
             {
                 user.Email = dto.Email;
             }

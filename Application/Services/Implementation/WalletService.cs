@@ -54,10 +54,6 @@ namespace Application.Services.Implementation
 
         public double InsertMoney(WalletDTO dto, int id)
         {
-            if (Double.IsNaN(dto.Amount) || dto.Amount < 1)
-            {
-                throw new Exception("Please insert positive number greater than 1!");
-            }
             var wallet = _unitOfWork.Wallet.Find(w => w.UserId == id).FirstOrDefault();
             wallet.Balance += dto.Amount;
             var transactiondto = new TransactionDTO()

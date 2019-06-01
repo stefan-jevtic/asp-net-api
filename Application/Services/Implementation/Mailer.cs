@@ -7,7 +7,7 @@ namespace Application.Services.Implementation
 {
     public class Mailer : IMailer
     {
-        private readonly string HostMail = "<email>";
+        private readonly string HostMail = "stefan.jevtic.45.15@ict.edu.rs";
         private readonly string HostPassword = "<password>";
         private readonly string MailServer = "smtp.gmail.com";
         private readonly int MailPort = 587;

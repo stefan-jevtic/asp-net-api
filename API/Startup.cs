@@ -1,7 +1,11 @@
 ﻿using System.Text;
+using Application.DTO;
 using Application.Services.Implementation;
 using Application.Services.Interfaces;
+using Application.Validation;
 using DataAccess;
+using FluentValidation;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
@@ -27,6 +31,14 @@ namespace API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddMvc()
+                .AddFluentValidation(fv =>
+                {
+                    fv.RegisterValidatorsFromAssemblyContaining<WalletValidator>();
+                    fv.RegisterValidatorsFromAssemblyContaining<CartValidator>();
+                });
+            services.AddTransient<IValidator<WalletDTO>, WalletValidator>();
+            services.AddTransient<IValidator<CartDTO>, CartValidator>();
             services.AddDbContext<RestaurantContext>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICartService, CartService>();

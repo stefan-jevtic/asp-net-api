@@ -21,14 +21,6 @@ namespace Application.Services.Implementation
         }
         public int Insert(CartDTO entity)
         {
-            if (entity.Quantity < 1)
-            {
-                throw new Exception("Please insert positive number for quantity!");
-            }
-            if (entity.DishId < 1)
-            {
-                throw new Exception("Please insert positive number for dish!");
-            }
             var dish = _unitOfWork.Dish.Get(entity.DishId);
             if (dish == null)
             {
