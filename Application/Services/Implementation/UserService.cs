@@ -13,10 +13,12 @@ namespace Application.Services.Implementation
     public class UserService : IUserService
     {
         private readonly IUnitOfWork _unitOfWork;
+        private readonly IMailer _mailer;
 
-        public UserService(IUnitOfWork unitOfWork)
+        public UserService(IUnitOfWork unitOfWork, IMailer mailer)
         {
             _unitOfWork = unitOfWork;
+            _mailer = mailer;
         } 
         
         public int Insert(AuthDTO data)
@@ -208,6 +210,11 @@ namespace Application.Services.Implementation
                 return token;
             }
             throw new Exception("User not found!");
+        }
+
+        public void SendMail(MailDTO dto, int id)
+        {
+            _mailer.SendMail(dto.Subject, dto.Body, id);
         }
     }
 }

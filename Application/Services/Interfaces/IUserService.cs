@@ -10,5 +10,6 @@ namespace Application.Services.Interfaces
     {
         PageResponse<TransactionDTO> GetTransactions(TransactionSearch search, int userId);
         string Login(AuthDTO dto, IConfiguration config);
+        void SendMail(MailDTO dto, int id);
     }
 }

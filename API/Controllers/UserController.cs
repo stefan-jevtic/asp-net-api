@@ -1,3 +1,4 @@
+using System;
 using System.Security.Claims;
 using Application.DTO;
 using Application.Searches;
@@ -42,6 +43,22 @@ namespace API.Controllers
             var userId = AuthMiddleware.GetUserId(GetClaim());
             _service.DeleteById(userId);
             return Ok("Your account is successfully deleted!");
+        }
+
+        [HttpPost]
+        [Route("Contact")]
+        public IActionResult Contact([FromBody] MailDTO dto)
+        {
+            var userId = AuthMiddleware.GetUserId(GetClaim());
+            try
+            {
+                _service.SendMail(dto, userId);
+                return Ok("Mail sent!");
+            }
+            catch (Exception e)
+            {
+                return BadRequest("Something went wrong!");
+            }
         }
 
         ClaimsIdentity GetClaim()

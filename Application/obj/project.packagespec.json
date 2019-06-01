@@ -33,6 +33,10 @@
   "frameworks": {
     "netcoreapp2.2": {
       "dependencies": {
+        "MailKit": {
+          "target": "Package",
+          "version": "[2.1.5.1, )"
+        },
         "Microsoft.NETCore.App": {
           "suppressParent": "All",
           "target": "Package",

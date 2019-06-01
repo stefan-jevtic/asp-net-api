@@ -34,6 +34,7 @@ namespace API
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<IWalletService, WalletService>();
+            services.AddTransient<IMailer, Mailer>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)  
