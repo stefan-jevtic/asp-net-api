@@ -11,9 +11,9 @@ namespace Repository.Repositories
         {
         }
         
-        public RestaurantContext RestaurantContext
+        public LibraryContext LibraryContext
         {
-            get { return _context as RestaurantContext; }
+            get { return _context as LibraryContext; }
         }
 
     }

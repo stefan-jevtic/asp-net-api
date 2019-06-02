@@ -7,5 +7,6 @@ namespace Application.Services.Interfaces
     {
         IQueryable<CartDTO> ListCart(int id);
         void Purchase(int id);
+        bool CheckItemExist(int userId, int itemId);
     }
 }

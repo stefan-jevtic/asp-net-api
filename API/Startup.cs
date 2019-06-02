@@ -39,10 +39,10 @@ namespace API
                 });
             services.AddTransient<IValidator<WalletDTO>, WalletValidator>();
             services.AddTransient<IValidator<CartDTO>, CartValidator>();
-            services.AddDbContext<RestaurantContext>();
+            services.AddDbContext<LibraryContext>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICartService, CartService>();
-            services.AddTransient<IDishService, DishService>();
+            services.AddTransient<IBookService, BookService>();
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<IWalletService, WalletService>();

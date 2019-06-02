@@ -13020,11 +13020,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/asp-net-api/API/API.csproj",
+      "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/ShoeShop/API/API.csproj",
       "projectName": "API",
-      "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/API/API.csproj",
+      "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/API/API.csproj",
       "packagesPath": "/home/kica/.nuget/packages/",
-      "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/API/obj/",
+      "outputPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/API/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/kica/.config/NuGet/NuGet.Config"
@@ -13038,14 +13038,14 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/Application.csproj": {
-              "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/Application.csproj"
+            "/home/kica/harddisk/c/RiderProjects/ShoeShop/Application/Application.csproj": {
+              "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Application/Application.csproj"
             },
-            "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/DataAccess.csproj": {
-              "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/DataAccess.csproj"
+            "/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/DataAccess.csproj": {
+              "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/DataAccess.csproj"
             },
-            "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj": {
-              "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj"
+            "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/Repository.csproj": {
+              "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/Repository.csproj"
             }
           }
         }

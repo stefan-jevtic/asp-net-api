@@ -1,0 +1,40 @@
+using System.Security.Claims;
+using Application.Searches;
+using Application.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+
+namespace API.Controllers
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    [Authorize]
+    public class BookController : Controller
+    {
+        private IBookService _service;
+        
+        public BookController(IBookService service)
+        {
+            _service = service;
+        }
+
+        [HttpGet]
+        [AllowAnonymous]
+        public IActionResult Get([FromQuery] BookSearch search)
+        {
+            var books = _service.Execute(search);
+            return Ok(books);
+        }
+        
+        ClaimsIdentity GetClaim()
+        {
+            return User.Identity as ClaimsIdentity;
+        }
+    }
+}
+
+/**
+ *
+ *    TODO: URADITI CRUD BEZ VALIDACIJE!!!
+ * 
+ */

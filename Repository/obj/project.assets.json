@@ -3649,11 +3649,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj",
+      "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/Repository.csproj",
       "projectName": "Repository",
-      "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj",
+      "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/Repository.csproj",
       "packagesPath": "/home/kica/.nuget/packages/",
-      "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/obj/",
+      "outputPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/kica/.config/NuGet/NuGet.Config"
@@ -3667,8 +3667,8 @@
       "frameworks": {
         "netcoreapp2.2": {
           "projectReferences": {
-            "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/DataAccess.csproj": {
-              "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/DataAccess.csproj"
+            "/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/DataAccess.csproj": {
+              "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/DataAccess.csproj"
             }
           }
         }

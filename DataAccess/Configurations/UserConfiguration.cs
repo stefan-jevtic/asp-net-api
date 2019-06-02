@@ -22,7 +22,7 @@ namespace DataAccess.Configurations
             builder.Property(u => u.IsDeleted)
                 .HasDefaultValue(0);
             builder.Property(u => u.CreatedAt)
-                .HasDefaultValueSql("CURRENT_DATE()");
+                .HasDefaultValueSql("CURRENT_TIME()");
         }
     }
 }

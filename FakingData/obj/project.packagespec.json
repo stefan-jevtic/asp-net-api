@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/asp-net-api/FakingData/FakingData.csproj",
+    "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/ShoeShop/FakingData/FakingData.csproj",
     "projectName": "FakingData",
-    "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/FakingData/FakingData.csproj",
-    "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/FakingData/obj/",
+    "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/FakingData/FakingData.csproj",
+    "outputPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/FakingData/obj/",
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "netcoreapp2.2"
@@ -15,8 +15,8 @@
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj": {
-            "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj"
+          "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/Repository.csproj": {
+            "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/Repository.csproj"
           }
         }
       }

@@ -7,3 +7,12 @@
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/obj/Debug/netcoreapp2.2/Domain.AssemblyInfo.cs
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/obj/Debug/netcoreapp2.2/Domain.dll
 /home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/obj/Debug/netcoreapp2.2/Domain.pdb
+/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/bin/Debug/netcoreapp2.2/Domain.deps.json
+/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/bin/Debug/netcoreapp2.2/Domain.dll
+/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/bin/Debug/netcoreapp2.2/Domain.pdb
+/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/obj/Debug/netcoreapp2.2/Domain.csprojAssemblyReference.cache
+/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/obj/Debug/netcoreapp2.2/Domain.csproj.CoreCompileInputs.cache
+/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/obj/Debug/netcoreapp2.2/Domain.AssemblyInfoInputs.cache
+/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/obj/Debug/netcoreapp2.2/Domain.AssemblyInfo.cs
+/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/obj/Debug/netcoreapp2.2/Domain.dll
+/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/obj/Debug/netcoreapp2.2/Domain.pdb

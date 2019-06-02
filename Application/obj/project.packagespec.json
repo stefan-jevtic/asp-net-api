@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/Application.csproj",
+    "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Application/Application.csproj",
     "projectName": "Application",
-    "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/Application.csproj",
-    "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Application/obj/",
+    "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Application/Application.csproj",
+    "outputPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Application/obj/",
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "netcoreapp2.2"
@@ -15,11 +15,11 @@
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
-          "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj": {
-            "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj"
+          "/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/Domain.csproj": {
+            "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/Domain.csproj"
           },
-          "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj": {
-            "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Repository/Repository.csproj"
+          "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/Repository.csproj": {
+            "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/Repository.csproj"
           }
         }
       }

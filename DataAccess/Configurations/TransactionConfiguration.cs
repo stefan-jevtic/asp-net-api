@@ -13,7 +13,7 @@ namespace DataAccess.Configurations
             builder.Property(t => t.Type)
                 .IsRequired();
             builder.Property(t => t.CreatedAt)
-                .HasDefaultValueSql("CURRENT_DATE()");
+                .HasDefaultValueSql("CURRENT_TIME()");
             
         }
     }

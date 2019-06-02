@@ -7,14 +7,14 @@ namespace Repository.Repositories
 {
     public class UserRepository : Repository<User>, IUserRepository
     {
-        public UserRepository(RestaurantContext context) : base(context)
+        public UserRepository(DbContext context) : base(context)
         {
             
         }
 
-        public RestaurantContext RestaurantContext
+        public LibraryContext LibraryContext
         {
-            get { return _context as RestaurantContext; }
+            get { return _context as LibraryContext; }
         }
     }
 }

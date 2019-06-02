@@ -42,10 +42,11 @@ namespace WebApp
 
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
-            services.AddDbContext<RestaurantContext>();
+            services.AddDbContext<LibraryContext>();
             services.AddTransient<IUserService, UserService>();
-            services.AddTransient<IDishService, DishService>();
+            services.AddTransient<IBookService, BookService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IAuthorService, AuthorService>();
             services.AddTransient<IMailer, Mailer>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);

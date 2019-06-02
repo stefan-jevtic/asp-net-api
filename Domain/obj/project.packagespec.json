@@ -1,10 +1,10 @@
 ﻿{
   "version": "1.0.0",
   "restore": {
-    "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj",
+    "projectUniqueName": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/Domain.csproj",
     "projectName": "Domain",
-    "projectPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/Domain.csproj",
-    "outputPath": "/home/kica/harddisk/c/RiderProjects/asp-net-api/Domain/obj/",
+    "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/Domain.csproj",
+    "outputPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Domain/obj/",
     "projectStyle": "PackageReference",
     "originalTargetFrameworks": [
       "netcoreapp2.2"

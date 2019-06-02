@@ -12,7 +12,7 @@ namespace DataAccess.Configurations
                 .IsRequired()
                 .HasMaxLength(100);
             builder.Property(c => c.CreatedAt)
-                .HasDefaultValueSql("CURRENT_DATE");
+                .HasDefaultValueSql("CURRENT_TIME()");
             
         }
     }

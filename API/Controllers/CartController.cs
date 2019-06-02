@@ -52,6 +52,25 @@ namespace API.Controllers
                 return BadRequest(e.Message);
             }
         }
+        
+        [HttpPut]
+        public IActionResult Put([FromBody] CartDTO dto)
+        {
+            var userId = AuthMiddleware.GetUserId(GetClaim());
+            try
+            {
+                if (_service.CheckItemExist(userId, dto.Id))
+                {
+                    _service.Update(dto, dto.Id);
+                    return Ok("Quantity successfully updated!");
+                }
+                return BadRequest("Order with that id does not exist in your cart!");
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
 
         [HttpPost]
         [Route("Submit")]
@@ -73,9 +92,13 @@ namespace API.Controllers
         public IActionResult Delete([FromBody] CartDTO dto)
         {
             var userId = AuthMiddleware.GetUserId(GetClaim());
-            // todo: Proveriti da li je korisnik prosledio svoju prodzbinu!
-            _service.DeleteById(dto.Id);
-            return Ok("Successfully deleted!");
+            if (_service.CheckItemExist(userId, dto.Id))
+            {
+                _service.DeleteById(dto.Id);
+                return Ok("Successfully deleted!");
+            }
+
+            return BadRequest("Order with that id does not exist in your cart!");
         }
         
         ClaimsIdentity GetClaim()

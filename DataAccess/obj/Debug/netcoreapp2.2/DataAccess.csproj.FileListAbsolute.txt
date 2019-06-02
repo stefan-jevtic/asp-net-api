@@ -12,3 +12,17 @@
 /home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/obj/Debug/netcoreapp2.2/DataAccess.csproj.CopyComplete
 /home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/obj/Debug/netcoreapp2.2/DataAccess.dll
 /home/kica/harddisk/c/RiderProjects/asp-net-api/DataAccess/obj/Debug/netcoreapp2.2/DataAccess.pdb
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/bin/Debug/netcoreapp2.2/DataAccess.deps.json
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/bin/Debug/netcoreapp2.2/DataAccess.runtimeconfig.json
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/bin/Debug/netcoreapp2.2/DataAccess.runtimeconfig.dev.json
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/bin/Debug/netcoreapp2.2/DataAccess.dll
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/bin/Debug/netcoreapp2.2/DataAccess.pdb
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/bin/Debug/netcoreapp2.2/Domain.dll
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/bin/Debug/netcoreapp2.2/Domain.pdb
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/obj/Debug/netcoreapp2.2/DataAccess.csprojAssemblyReference.cache
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/obj/Debug/netcoreapp2.2/DataAccess.csproj.CoreCompileInputs.cache
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/obj/Debug/netcoreapp2.2/DataAccess.AssemblyInfoInputs.cache
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/obj/Debug/netcoreapp2.2/DataAccess.AssemblyInfo.cs
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/obj/Debug/netcoreapp2.2/DataAccess.csproj.CopyComplete
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/obj/Debug/netcoreapp2.2/DataAccess.dll
+/home/kica/harddisk/c/RiderProjects/ShoeShop/DataAccess/obj/Debug/netcoreapp2.2/DataAccess.pdb

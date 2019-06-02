@@ -7,11 +7,13 @@ namespace Repository.UnitOfWork
     {
         IUserRepository User { get; }
         ICategoryRepository Category { get; }
-        IDishRepository Dish { get; }
+        IBookRepository Book { get; }
         IWalletRepository Wallet { get; }
         ICartRepository Cart { get; }
         ITransactionRepository Transaction { get; }
         IOrderRepository Order { get; }
+        IAuthorRepository Author { get; }
+        IRoleRepository Role { get; }
         void Save();
     }
 }
