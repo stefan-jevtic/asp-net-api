@@ -60,6 +60,7 @@ namespace API
                         ValidateIssuerSigningKey = true,  
                         ValidIssuer = Configuration["Jwt:Issuer"],  
                         ValidAudience = Configuration["Jwt:Issuer"],  
+                        RoleClaimType = "Roles",
                         IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["Jwt:Key"]))  
                     };  
                 });

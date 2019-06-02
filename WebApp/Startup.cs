@@ -46,6 +46,7 @@ namespace WebApp
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IDishService, DishService>();
             services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IMailer, Mailer>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

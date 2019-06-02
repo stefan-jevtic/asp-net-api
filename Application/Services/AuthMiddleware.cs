@@ -39,7 +39,8 @@ namespace Application.Services
                 new Claim(JwtRegisteredClaimNames.Sid, data.Id.ToString()), 
                 new Claim(JwtRegisteredClaimNames.Email, data.Email),  
                 new Claim(JwtRegisteredClaimNames.GivenName, data.FirstName),
-                new Claim(JwtRegisteredClaimNames.FamilyName, data.LastName)
+                new Claim(JwtRegisteredClaimNames.FamilyName, data.LastName),
+                new Claim("Roles", data.RoleId.ToString()), 
             }; 
   
             var token = new JwtSecurityToken(config["Jwt:Issuer"],  
