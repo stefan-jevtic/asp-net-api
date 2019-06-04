@@ -52,18 +52,16 @@ namespace Application.Services
             return new JwtSecurityTokenHandler().WriteToken(token);  
         }
 
-        public static int GetUserId(ClaimsIdentity claimsIdentity)
+        public static int GetUserId(ClaimsPrincipal User)
         {
+            var claimsIdentity = GetClaim(User);
             var userId = claimsIdentity.Claims.Where(x => x.Type == "sid").FirstOrDefault().Value;
-            /*foreach (var claim in claimsIdentity.Claims)
-            {
-                if (claim.Type.IndexOf("emailaddress") != -1)
-                {
-                    Console.WriteLine(claim.Value);
-                }
-                Console.WriteLine(claim.Type + ":" + claim.Value);
-            }*/
             return Int32.Parse(userId);
+        }
+
+        public static ClaimsIdentity GetClaim(ClaimsPrincipal User)
+        {
+            return User.Identity as ClaimsIdentity;
         }
     }
 }

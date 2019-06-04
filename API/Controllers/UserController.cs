@@ -24,7 +24,7 @@ namespace API.Controllers
         [Route("Transactions")]
         public IActionResult Transactions([FromQuery] TransactionSearch search)
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             var transactions = _service.GetTransactions(search, userId);
             return Ok(transactions);
         }
@@ -32,7 +32,7 @@ namespace API.Controllers
         [HttpPut]
         public IActionResult Put([FromBody] AuthDTO dto)
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             _service.Update(dto, userId);
             return Ok("Successfully updated!");
         }
@@ -40,7 +40,7 @@ namespace API.Controllers
         [HttpDelete]
         public IActionResult Delete()
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             _service.DeleteById(userId);
             return Ok("Your account is successfully deleted!");
         }
@@ -49,7 +49,7 @@ namespace API.Controllers
         [Route("Contact")]
         public IActionResult Contact([FromBody] MailDTO dto)
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             try
             {
                 _service.SendMail(dto, userId);
@@ -59,11 +59,6 @@ namespace API.Controllers
             {
                 return BadRequest("Something went wrong!");
             }
-        }
-
-        ClaimsIdentity GetClaim()
-        {
-            return User.Identity as ClaimsIdentity;
         }
     }
 }

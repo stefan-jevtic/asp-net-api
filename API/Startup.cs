@@ -13,8 +13,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.IdentityModel.Tokens;
-using Repository.Interfaces;
-using Repository.Repositories;
 using Repository.UnitOfWork;
 
 namespace API
@@ -47,6 +45,8 @@ namespace API
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<IWalletService, WalletService>();
             services.AddTransient<IMailer, Mailer>();
+            services.AddTransient<ICategoryService, CategoryService>();
+            services.AddTransient<IAuthorService, AuthorService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)  

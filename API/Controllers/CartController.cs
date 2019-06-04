@@ -1,12 +1,10 @@
 using System;
-using System.Linq;
 using System.Security.Claims;
 using Application.DTO;
 using Application.Services;
 using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Repository.UnitOfWork;
 
 namespace API.Controllers
 {
@@ -25,7 +23,7 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             try
             {
                 var items = _service.ListCart(userId);
@@ -40,7 +38,7 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] CartDTO dto)
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             dto.UserId = userId;
             try
             {
@@ -56,7 +54,7 @@ namespace API.Controllers
         [HttpPut]
         public IActionResult Put([FromBody] CartDTO dto)
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             try
             {
                 if (_service.CheckItemExist(userId, dto.Id))
@@ -76,7 +74,7 @@ namespace API.Controllers
         [Route("Submit")]
         public IActionResult Submit()
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             try
             {
                 _service.Purchase(userId);
@@ -91,7 +89,7 @@ namespace API.Controllers
         [HttpDelete]
         public IActionResult Delete([FromBody] CartDTO dto)
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             if (_service.CheckItemExist(userId, dto.Id))
             {
                 _service.DeleteById(dto.Id);
@@ -99,11 +97,6 @@ namespace API.Controllers
             }
 
             return BadRequest("Order with that id does not exist in your cart!");
-        }
-        
-        ClaimsIdentity GetClaim()
-        {
-            return User.Identity as ClaimsIdentity;
         }
     }
 }

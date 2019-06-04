@@ -25,7 +25,7 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Get([FromQuery] OrderSearch search)
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             search.UserId = userId;
             
             var orders = _service.Execute(search);
@@ -35,11 +35,6 @@ namespace API.Controllers
                 return Ok("You don't have any orders yet!");
             }
             return Ok(orders);
-        }
-        
-        ClaimsIdentity GetClaim()
-        {
-            return User.Identity as ClaimsIdentity;
         }
     }
 }

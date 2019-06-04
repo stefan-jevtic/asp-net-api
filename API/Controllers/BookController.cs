@@ -25,11 +25,6 @@ namespace API.Controllers
             var books = _service.Execute(search);
             return Ok(books);
         }
-        
-        ClaimsIdentity GetClaim()
-        {
-            return User.Identity as ClaimsIdentity;
-        }
     }
 }
 

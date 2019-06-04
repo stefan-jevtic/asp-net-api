@@ -24,7 +24,7 @@ namespace API.Controllers
         [HttpGet]
         public IActionResult Get()
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             var wallet = _service.GetById(userId);
             return Ok("Your balance is: " + wallet.Amount);
         }
@@ -32,14 +32,9 @@ namespace API.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] WalletDTO dto)
         {
-            var userId = AuthMiddleware.GetUserId(GetClaim());
+            var userId = AuthMiddleware.GetUserId(User);
             var balance = _service.InsertMoney(dto, userId);
             return Ok("Your current balance is: " + balance);
-        }
-        
-        ClaimsIdentity GetClaim()
-        {
-            return User.Identity as ClaimsIdentity;
         }
     }
 }
