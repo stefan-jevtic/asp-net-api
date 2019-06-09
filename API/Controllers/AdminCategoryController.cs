@@ -33,7 +33,7 @@ namespace API.Controllers
         }
 
         [HttpPost]
-        public IActionResult Post([FromBody] CategoryDTO dto)
+        public IActionResult Post([FromBody] InsertUpdateCategoryDTO dto)
         {
             try
             {
@@ -47,8 +47,8 @@ namespace API.Controllers
         }
         
         // POST: Category/Edit/5
-        [HttpPut("{Id}")]
-        public IActionResult Put(int id, [FromBody] CategoryDTO dto)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] InsertUpdateCategoryDTO dto)
         {
             try
             {

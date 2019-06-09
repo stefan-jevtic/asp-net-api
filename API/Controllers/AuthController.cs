@@ -20,11 +20,11 @@ namespace API.Controllers
         
         [HttpPost]
         [Route("Register")]
-        public IActionResult Register([FromBody] AuthDTO data)
+        public IActionResult Register([FromBody] RegisterDTO data)
         {
             try
             {
-                _service.Insert(data);
+                _service.Register(data);
                 return Ok("User successfully registered!");
             }
             catch (Exception e)
@@ -35,7 +35,7 @@ namespace API.Controllers
 
         [HttpPost]
         [Route("Login")]
-        public IActionResult Login([FromBody] AuthDTO data)
+        public IActionResult Login([FromBody] LoginDTO data)
         {
             try
             {

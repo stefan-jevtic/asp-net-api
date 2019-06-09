@@ -41,7 +41,7 @@ namespace WebApp.Controllers
         {
             try
             {
-               var dto = new AuthorDTO()
+               var dto = new InsertUpdateAuthorDTO()
                 {
                     FullName = collection["FullName"],
                 };
@@ -68,7 +68,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                var dto = new AuthorDTO()
+                var dto = new InsertUpdateAuthorDTO()
                 {
                     FullName = collection["FullName"]
                 };

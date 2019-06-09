@@ -38,7 +38,7 @@ namespace API
                     fv.RegisterValidatorsFromAssemblyContaining<CartValidator>();
                 });
             services.AddTransient<IValidator<WalletDTO>, WalletValidator>();
-            services.AddTransient<IValidator<CartDTO>, CartValidator>();
+            services.AddTransient<IValidator<InsertCartDTO>, CartValidator>();
             services.AddDbContext<LibraryContext>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<ICartService, CartService>();
@@ -47,6 +47,7 @@ namespace API
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<IWalletService, WalletService>();
             services.AddTransient<IMailer, Mailer>();
+            services.AddTransient<IImageService, ImageService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IAuthorService, AuthorService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
@@ -68,7 +69,7 @@ namespace API
                 });
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new Info(){ Title = "Food ordering API", Version = "v1" });
+                c.SwaggerDoc("v1", new Info(){ Title = "Book library API", Version = "v1" });
                 var security = new Dictionary<string, IEnumerable<string>>
                 {
                     {"Bearer", new string[] { }},

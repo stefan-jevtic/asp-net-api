@@ -14,12 +14,14 @@ namespace WebApp.Controllers
         private readonly IBookService _service;
         private readonly ICategoryService _categoryService;
         private readonly IAuthorService _authorService;
+        private readonly IImageService _image;
 
-        public BookController(IBookService service, ICategoryService categoryService, IAuthorService authorService)
+        public BookController(IBookService service, ICategoryService categoryService, IAuthorService authorService, IImageService image)
         {
             _service = service;
             _categoryService = categoryService;
             _authorService = authorService;
+            _image = image;
         }
         // GET: Book
         public ActionResult Index()
@@ -55,8 +57,8 @@ namespace WebApp.Controllers
         {
             try
             {
-                var path = UploadFile(file);
-                var dto = new BookDTO()
+                var path = _image.Upload(file);
+                var dto = new InsertUpdateBookDTO()
                 {
                     Title = collection["Book.Title"],
                     Description = collection["Book.Description"],
@@ -98,7 +100,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                var dto = new BookDTO()
+                var dto = new InsertUpdateBookDTO()
                 {
                     Title = collection["Book.Title"],
                     Description = collection["Book.Description"],
@@ -110,8 +112,8 @@ namespace WebApp.Controllers
                 if (file != null)
                 {
                     var book = _service.GetById(id);
-                    DeleteImage(book.ImageUrl);
-                    var path = UploadFile(file);
+                    _image.Delete(book.ImageUrl);
+                    var path = _image.Upload(file);
                     dto.ImageUrl = path;
                 }
                 _service.Update(dto, id);
@@ -139,7 +141,7 @@ namespace WebApp.Controllers
             try
             {
                 var book = _service.GetById(id);
-                DeleteImage(book.ImageUrl);
+                _image.Delete(book.ImageUrl);
                 _service.DeleteById(id);
                 return RedirectToAction(nameof(Index));
             }
@@ -147,26 +149,6 @@ namespace WebApp.Controllers
             {
                 return View();
             }
-        }
-
-        public string UploadFile(IFormFile file)
-        {
-            var fileName = file.FileName;
-            var extension = Path.GetExtension(file.FileName);
-            var name = "images/" + AuthMiddleware.ComputeSha256Hash(DateTime.UtcNow.ToTimestamp() + fileName) + extension;
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", name);
-            using (var fileStream = new FileStream(path, FileMode.Create))
-            {
-                file.CopyTo(fileStream);
-            }
-
-            return name;
-        }
-
-        public void DeleteImage(string image)
-        {
-            var path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", image);
-            System.IO.File.Delete(path);
         }
     }
 }

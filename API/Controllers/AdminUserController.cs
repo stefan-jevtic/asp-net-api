@@ -36,11 +36,11 @@ namespace API.Controllers
         
         // POST: User/Create
         [HttpPost]
-        public ActionResult Post([FromBody] AuthDTO dto)
+        public ActionResult Post([FromBody] RegisterDTO dto)
         {
             try
             {
-                _service.Insert(dto);
+                _service.Register(dto);
                 return Ok("User successfully added!");
             }
             catch (Exception e)
@@ -50,10 +50,11 @@ namespace API.Controllers
         }
         
         [HttpPut("{id}")]
-        public ActionResult Edit(int id, [FromBody] AuthDTO dto)
+        public ActionResult Edit(int id, [FromBody] UpdateUserDTO dto)
         {
             try
             {
+                _service.Update(dto, id);
                 return Ok("Successfully updated");
             }
             catch (Exception e)

@@ -21,7 +21,7 @@ namespace Application.Services.Implementation
             _mailer = mailer;
         } 
         
-        public int Insert(AuthDTO data)
+        public int Insert(UpdateUserDTO data)
         {
             if (String.IsNullOrEmpty(data.FirstName))
             {
@@ -69,7 +69,7 @@ namespace Application.Services.Implementation
             return user.Id;
         }
 
-        public void Update(AuthDTO dto, int id)
+        public void Update(UpdateUserDTO dto, int id)
         {
             var user = _unitOfWork.User.Get(id);
             
@@ -97,7 +97,7 @@ namespace Application.Services.Implementation
             _unitOfWork.Save();
         }
 
-        public void Delete(AuthDTO entity)
+        public void Delete(UpdateUserDTO entity)
         {
             throw new NotImplementedException();
         }
@@ -110,26 +110,30 @@ namespace Application.Services.Implementation
             _unitOfWork.Save();
         }
 
-        public AuthDTO GetById(int id)
+        public UserDTO GetById(int id)
         {
-            var user = _unitOfWork.User.Find(u => u.Id == id).Select(u => new AuthDTO()
+            var user = _unitOfWork.User.Find(u => u.Id == id).Select(u => new UserDTO()
             {
                 Id = u.Id,
                 FirstName = u.FirstName,
                 LastName = u.LastName,
-                Email = u.Email
+                Email = u.Email,
+                Password = u.Password,
+                CreatedAt = u.CreatedAt
             }).FirstOrDefault();
             return user;
         }
 
-        public IQueryable<AuthDTO> GetAll()
+        public IQueryable<UserDTO> GetAll()
         {
-            var users = _unitOfWork.User.GetAll().Select(u => new AuthDTO() {
+            var users = _unitOfWork.User.GetAll().Select(u => new UserDTO() {
                 Id = u.Id,
                 FirstName = u.FirstName,
                 LastName = u.LastName,
                 Email = u.Email,
-                IsDeleted = u.IsDeleted
+                Password = u.Password,
+                IsDeleted = u.IsDeleted,
+                CreatedAt = u.CreatedAt
             });
             return users;
         }
@@ -179,8 +183,14 @@ namespace Application.Services.Implementation
             var transactions = Execute(search);
             return transactions;
         }
+        
 
-        public string Login(AuthDTO data, IConfiguration config)
+        public void SendMail(MailDTO dto, int id)
+        {
+            _mailer.SendMail(dto.Subject, dto.Body, id);
+        }
+
+        public string Login(LoginDTO data, IConfiguration config)
         {
             var token = "No token!";
             
@@ -210,9 +220,52 @@ namespace Application.Services.Implementation
             throw new Exception("User not found!");
         }
 
-        public void SendMail(MailDTO dto, int id)
+        public int Register(RegisterDTO data)
         {
-            _mailer.SendMail(dto.Subject, dto.Body, id);
+            if (String.IsNullOrEmpty(data.FirstName))
+            {
+                throw new Exception("First name field is required!");
+            }
+            
+            if (String.IsNullOrEmpty(data.LastName))
+            {
+                throw new Exception("Last name field is required!");
+            }
+            
+            if (String.IsNullOrEmpty(data.Email))
+            {
+                throw new Exception("Email field is required!");
+            }
+            
+            if (String.IsNullOrEmpty(data.Password))
+            {
+                throw new Exception("Password field is required!");
+            }
+
+            if (!data.Email.Contains("@"))
+            {
+                throw new Exception("Enter valid email!");
+            }
+
+            data.Password = AuthMiddleware.ComputeSha256Hash(data.Password);
+            var user = new User()
+            {
+                FirstName = data.FirstName,
+                LastName = data.LastName,
+                Email = data.Email,
+                Password = data.Password,
+                RoleId = 2
+            };
+            _unitOfWork.User.Add(user);
+            _unitOfWork.Save();
+            var wallet = new Wallet()
+            {
+                Balance = 0,
+                UserId = user.Id
+            };
+            _unitOfWork.Wallet.Add(wallet);
+            _unitOfWork.Save();
+            return user.Id;
         }
     }
 }

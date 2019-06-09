@@ -6,10 +6,10 @@ using Microsoft.Extensions.Configuration;
 
 namespace Application.Services.Interfaces
 {
-    public interface IUserService : IService<AuthDTO>, ICommand<TransactionSearch, PageResponse<TransactionDTO>>
+    public interface IUserService : IService<UpdateUserDTO, UserDTO>, ILoginService, IRegisterService, ICommand<TransactionSearch, PageResponse<TransactionDTO>>
     {
         PageResponse<TransactionDTO> GetTransactions(TransactionSearch search, int userId);
-        string Login(AuthDTO dto, IConfiguration config);
+        
         void SendMail(MailDTO dto, int id);
     }
 }

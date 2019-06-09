@@ -15,7 +15,7 @@ namespace Application.Services.Implementation
         {
             _unitOfWork = unitOfWork;
         }
-        public int Insert(CategoryDTO entity)
+        public int Insert(InsertUpdateCategoryDTO entity)
         {
             var category = new Category()
             {
@@ -27,7 +27,7 @@ namespace Application.Services.Implementation
             return category.Id;
         }
 
-        public void Update(CategoryDTO entity, int id)
+        public void Update(InsertUpdateCategoryDTO entity, int id)
         {
             var category = _unitOfWork.Category.Find(c => c.Id == id).FirstOrDefault();
             category.Name = entity.Name;
@@ -35,7 +35,7 @@ namespace Application.Services.Implementation
             _unitOfWork.Save();
         }
 
-        public void Delete(CategoryDTO entity)
+        public void Delete(InsertUpdateCategoryDTO entity)
         {
             throw new System.NotImplementedException();
         }

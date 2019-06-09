@@ -4,7 +4,7 @@ using Application.Searches;
 
 namespace Application.Services.Interfaces
 {
-    public interface IAuthorService: IService<AuthorDTO>, ICommand<AuthorSearch, PageResponse<AuthorDTO>>
+    public interface IAuthorService: IService<InsertUpdateAuthorDTO, AuthorDTO>, ICommand<AuthorSearch, PageResponse<AuthorDTO>>
     {
         
     }

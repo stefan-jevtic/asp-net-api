@@ -17,7 +17,7 @@ namespace Application.Services.Implementation
         {
             _unitOfWork = unitOfWork;
         } 
-        public int Insert(AuthorDTO entity)
+        public int Insert(InsertUpdateAuthorDTO entity)
         {
             var author = new Author()
             {
@@ -29,7 +29,7 @@ namespace Application.Services.Implementation
             return author.Id;
         }
 
-        public void Update(AuthorDTO entity, int id)
+        public void Update(InsertUpdateAuthorDTO entity, int id)
         {
             var author = _unitOfWork.Author.Find(c => c.Id == id).FirstOrDefault();
             author.FullName = entity.FullName;
@@ -37,7 +37,7 @@ namespace Application.Services.Implementation
             _unitOfWork.Save();
         }
 
-        public void Delete(AuthorDTO entity)
+        public void Delete(InsertUpdateAuthorDTO entity)
         {
             throw new System.NotImplementedException();
         }

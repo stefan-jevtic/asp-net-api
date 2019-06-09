@@ -30,7 +30,7 @@ namespace API.Controllers
         }
 
         [HttpPut]
-        public IActionResult Put([FromBody] AuthDTO dto)
+        public IActionResult Put([FromBody] UpdateUserDTO dto)
         {
             var userId = AuthMiddleware.GetUserId(User);
             _service.Update(dto, userId);

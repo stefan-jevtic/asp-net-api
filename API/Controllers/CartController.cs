@@ -36,13 +36,12 @@ namespace API.Controllers
         }
         
         [HttpPost]
-        public IActionResult Post([FromBody] CartDTO dto)
+        public IActionResult Post([FromBody] InsertCartDTO dto)
         {
             var userId = AuthMiddleware.GetUserId(User);
-            dto.UserId = userId;
             try
             {
-                _service.Insert(dto);
+                _service.Insert(dto, userId);
                 return Ok("Successfully added to cart!");
             }
             catch (Exception e)
@@ -51,15 +50,15 @@ namespace API.Controllers
             }
         }
         
-        [HttpPut]
-        public IActionResult Put([FromBody] CartDTO dto)
+        [HttpPut("{id}")]
+        public IActionResult Put(int id, [FromBody] UpdateCartDTO dto)
         {
             var userId = AuthMiddleware.GetUserId(User);
             try
             {
-                if (_service.CheckItemExist(userId, dto.Id))
+                if (_service.CheckItemExist(userId, id))
                 {
-                    _service.Update(dto, dto.Id);
+                    _service.Update(dto, id);
                     return Ok("Quantity successfully updated!");
                 }
                 return BadRequest("Order with that id does not exist in your cart!");
@@ -86,13 +85,13 @@ namespace API.Controllers
             }
         }
 
-        [HttpDelete]
-        public IActionResult Delete([FromBody] CartDTO dto)
+        [HttpDelete("{id}")]
+        public IActionResult Delete(int id)
         {
             var userId = AuthMiddleware.GetUserId(User);
-            if (_service.CheckItemExist(userId, dto.Id))
+            if (_service.CheckItemExist(userId, id))
             {
-                _service.DeleteById(dto.Id);
+                _service.DeleteById(id);
                 return Ok("Successfully deleted!");
             }
 

@@ -41,7 +41,7 @@ namespace WebApp.Controllers
         {
             try
             {
-               var dto = new CategoryDTO()
+               var dto = new InsertUpdateCategoryDTO()
                 {
                     Name = collection["Name"],
                 };
@@ -68,7 +68,7 @@ namespace WebApp.Controllers
         {
             try
             {
-                var dto = new CategoryDTO()
+                var dto = new InsertUpdateCategoryDTO()
                 {
                     Name = collection["Name"]
                 };

@@ -42,14 +42,14 @@ namespace WebApp.Controllers
         {
             try
             {
-                var dto = new AuthDTO()
+                var dto = new RegisterDTO()
                 {
                     FirstName = collection["FirstName"],
                     LastName = collection["LastName"],
                     Email = collection["Email"],
                     Password = AuthMiddleware.ComputeSha256Hash(collection["Password"]),
                 };
-                _service.Insert(dto);
+                _service.Register(dto);
 
                 return RedirectToAction(nameof(Index));
             }
@@ -74,7 +74,7 @@ namespace WebApp.Controllers
             try
             {
                 Console.WriteLine(collection["IsDeleted"]);
-                var dto = new AuthDTO()
+                var dto = new UpdateUserDTO()
                 {
                     FirstName = collection["FirstName"],
                     LastName = collection["LastName"],

@@ -19,8 +19,36 @@ namespace Application.Services.Implementation
             _unitOfWork = unitOfWork;
         } 
 
-        public int Insert(BookDTO dto)
+        public int Insert(InsertUpdateBookDTO dto)
         {
+            if (dto.Title == null)
+            {
+                throw new Exception("Title field is required!");
+            }
+            if (dto.Description == null)
+            {
+                throw new Exception("Description field is required!");
+            }
+            if (dto.Pages < 1)
+            {
+                throw new Exception("Pages field is required!");
+            }
+            if (dto.Price < 1)
+            {
+                throw new Exception("Price field is required!");
+            }
+            if (dto.CategoryId < 1)
+            {
+                throw new Exception("CategoryId field is required!");
+            }
+            if (dto.AuthorId < 1)
+            {
+                throw new Exception("AuthorId field is required!");
+            }
+            if (dto.ImageUrl == null)
+            {
+                throw new Exception("Image is required!");
+            }
             var book = new Book()
             {
                 Title = dto.Title,
@@ -37,15 +65,21 @@ namespace Application.Services.Implementation
             return book.Id;
         }
 
-        public void Update(BookDTO dto, int id)
+        public void Update(InsertUpdateBookDTO dto, int id)
         {
             var book = _unitOfWork.Book.Get(id);
-            book.Title = dto.Title;
-            book.Description = dto.Description;
-            book.Price = dto.Price;
-            book.Pages = dto.Pages;
-            book.CategoryId = dto.CategoryId;
-            book.AuthorId = dto.AuthorId;
+            if(dto.Title != null)
+                book.Title = dto.Title;
+            if(dto.Description != null)
+                book.Description = dto.Description;
+            if(dto.Price > 0)
+                book.Price = dto.Price;
+            if(dto.Pages > 0)
+                book.Pages = dto.Pages;
+            if(dto.CategoryId > 0)
+                book.CategoryId = dto.CategoryId;
+            if(dto.AuthorId > 0)
+                book.AuthorId = dto.AuthorId;
             book.ModifiedAt = DateTime.Now;
             if (dto.ImageUrl != null)
             {
@@ -54,7 +88,7 @@ namespace Application.Services.Implementation
             _unitOfWork.Save();
         }
 
-        public void Delete(BookDTO entity)
+        public void Delete(InsertUpdateBookDTO entity)
         {
             throw new System.NotImplementedException();
         }

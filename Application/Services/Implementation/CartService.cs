@@ -19,7 +19,7 @@ namespace Application.Services.Implementation
             _order = order;
             _transaction = transaction;
         }
-        public int Insert(CartDTO entity)
+        public int Insert(InsertCartDTO entity, int id)
         {
             var book = _unitOfWork.Book.Get(entity.BookId);
             if (book == null)
@@ -28,7 +28,7 @@ namespace Application.Services.Implementation
             }
             var cart = new Cart()
             {
-                UserId = entity.UserId,
+                UserId = id,
                 BookId = entity.BookId,
                 Quantity = entity.Quantity,
                 Price = book.Price,
@@ -39,7 +39,7 @@ namespace Application.Services.Implementation
             return cart.Id;
         }
 
-        public void Update(CartDTO entity, int id)
+        public void Update(UpdateCartDTO entity, int id)
         {
             var book = _unitOfWork.Cart.Get(id);
             book.Quantity = entity.Quantity;
@@ -47,7 +47,17 @@ namespace Application.Services.Implementation
             _unitOfWork.Save();
         }
 
-        public void Delete(CartDTO entity)
+        public int Insert(InsertCartDTO entity)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(InsertCartDTO entity, int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Delete(InsertCartDTO entity)
         {
             throw new System.NotImplementedException();
         }
