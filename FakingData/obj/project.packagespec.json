@@ -15,6 +15,9 @@
     "frameworks": {
       "netcoreapp2.2": {
         "projectReferences": {
+          "/home/kica/harddisk/c/RiderProjects/ShoeShop/Application/Application.csproj": {
+            "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Application/Application.csproj"
+          },
           "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/Repository.csproj": {
             "projectPath": "/home/kica/harddisk/c/RiderProjects/ShoeShop/Repository/Repository.csproj"
           }

@@ -36,3 +36,5 @@
 /home/kica/harddisk/c/RiderProjects/ShoeShop/FakingData/obj/Debug/netcoreapp2.2/FakingData.csproj.CopyComplete
 /home/kica/harddisk/c/RiderProjects/ShoeShop/FakingData/obj/Debug/netcoreapp2.2/FakingData.dll
 /home/kica/harddisk/c/RiderProjects/ShoeShop/FakingData/obj/Debug/netcoreapp2.2/FakingData.pdb
+/home/kica/harddisk/c/RiderProjects/ShoeShop/FakingData/bin/Debug/netcoreapp2.2/Application.dll
+/home/kica/harddisk/c/RiderProjects/ShoeShop/FakingData/bin/Debug/netcoreapp2.2/Application.pdb

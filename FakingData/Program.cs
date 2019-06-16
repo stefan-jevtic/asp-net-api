@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Application.Services;
 using DataAccess;
 using Domain;
 using Repository.UnitOfWork;
@@ -34,7 +35,7 @@ namespace FakingData
                     
                     unitOfWork.Author.Add(author);
                 }
-
+                unitOfWork.Save();
                 List<Book> books = new List<Book>();
                 
                 books.Add(new Book(){
@@ -43,7 +44,7 @@ namespace FakingData
                     Price = 200.00,
                     Pages = 256,
                     AuthorId = 1,
-                    Image = "as",
+                    Image = "images/da12ebfb0aa48fd8ec52ecb381c0d3c87f2d1fcc2c0feca0a354816fed22b21c.jpg",
                     CategoryId = 1
                 });
                 books.Add(new Book(){
@@ -52,7 +53,7 @@ namespace FakingData
                     Price = 250.00,
                     Pages = 283,
                     AuthorId = 2,
-                    Image = "as",
+                    Image = "images/5b8c161f3152a8408015682be99d1c0d3b71791a78855a8fe4c7a5eaccef1fcf.jpg",
                     CategoryId = 1
                 });
                 
@@ -62,7 +63,7 @@ namespace FakingData
                     Price = 300.00,
                     Pages = 288,
                     AuthorId = 3,
-                    Image = "as",
+                    Image = "images/4d2b62f7b0d1e808d0433d3cd172f61ee9b282a98e906982f78759e7126a9ded.jpg",
                     CategoryId = 2
                 });
                 books.Add(new Book(){
@@ -71,7 +72,7 @@ namespace FakingData
                     Price = 660.00,
                     Pages = 480,
                     AuthorId = 4,
-                    Image = "as",
+                    Image = "images/10f39e930aa325bb3756b7d7ddc4f76271e42baa3207814b8f9f43efce2fc150.jpg",
                     CategoryId = 2
                 });
                 
@@ -81,7 +82,7 @@ namespace FakingData
                     Price = 750.00,
                     Pages = 560,
                     AuthorId = 5,
-                    Image = "as",
+                    Image = "images/cc04f3a8216c6c570af0f626cf743f64caae46818e04012806561cd4f85dbfd6.jpg",
                     CategoryId = 3
                 });
                 books.Add(new Book(){
@@ -90,7 +91,7 @@ namespace FakingData
                     Price = 660.00,
                     Pages = 384,
                     AuthorId = 6,
-                    Image = "as",
+                    Image = "images/3ec46a399bf262b79b95200e7862fed6a56acee48b2e3e9f0b79e30163d49f14.jpg",
                     CategoryId = 3
                 });
                 
@@ -100,7 +101,7 @@ namespace FakingData
                     Price = 350.00,
                     Pages = 544,
                     AuthorId = 7,
-                    Image = "as",
+                    Image = "images/ffc682d54bcaebae7fed9c70506fc6f629cdd8d8a6b3c7159b97e3294f5a9d05.jpg",
                     CategoryId = 4
                 });
                 books.Add(new Book(){
@@ -109,7 +110,7 @@ namespace FakingData
                     Price = 980.00,
                     Pages = 384,
                     AuthorId = 8,
-                    Image = "as",
+                    Image = "images/c32cdbfb569a3ef4da8c2356f3668def517323f605ffec02f57fde9007c0e8b5.jpg",
                     CategoryId = 4
                 });
                 
@@ -119,7 +120,7 @@ namespace FakingData
                     Price = 50.00,
                     Pages = 304,
                     AuthorId = 9,
-                    Image = "as",
+                    Image = "images/171a1d3855b4aa00a7dff07e92dd70a740439a6d876d502cac31d92ca1429c10.jpg",
                     CategoryId = 5
                 });
                 books.Add(new Book(){
@@ -128,7 +129,7 @@ namespace FakingData
                     Price = 70.00,
                     Pages = 194,
                     AuthorId = 10,
-                    Image = "as",
+                    Image = "images/699b56f78d2e7f5df6f61c5cfd4bdb01473302cd28bd2e93722fd50689eb3ef2.jpg",
                     CategoryId = 5
                 });
 
@@ -137,8 +138,38 @@ namespace FakingData
                     unitOfWork.Book.Add(book);
                 }
                
-                unitOfWork.Role.Add(new Role() {Name = "Admin"});
-                unitOfWork.Role.Add(new Role() {Name = "Customer"});
+                unitOfWork.Role.Add(new Role() {Name = "Admin", CreatedAt = DateTime.Now});
+                unitOfWork.Role.Add(new Role() {Name = "Customer", CreatedAt = DateTime.Now});
+                unitOfWork.Save();
+                unitOfWork.User.Add(new User()
+                {
+                    FirstName = "Admin",
+                    LastName = "Adminic",
+                    Email = "admin@admin.com",
+                    Password = AuthMiddleware.ComputeSha256Hash("admin123"),
+                    CreatedAt = DateTime.Now,
+                    RoleId = 1
+                });
+                unitOfWork.User.Add(new User()
+                {
+                    FirstName = "Korisnik",
+                    LastName = "Korisnicic",
+                    Email = "user@user.com",
+                    Password = AuthMiddleware.ComputeSha256Hash("user123"),
+                    CreatedAt = DateTime.Now,
+                    RoleId = 2
+                });
+                unitOfWork.Save();
+                unitOfWork.Wallet.Add(new Wallet()
+                {
+                    UserId = 1,
+                    Balance = 0
+                });
+                unitOfWork.Wallet.Add(new Wallet()
+                {
+                    UserId = 2,
+                    Balance = 0
+                });
                 #endregion
                 
                 unitOfWork.Save();

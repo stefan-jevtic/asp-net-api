@@ -47,7 +47,7 @@ namespace WebApp
             services.AddTransient<IBookService, BookService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IAuthorService, AuthorService>();
-            services.AddTransient<IMailer, Mailer>();
+            services.AddTransient<IMailer>(m => new Mailer(new UnitOfWork(new LibraryContext()), "stefan.jevtic.45.15@ict.edu.rs", "<password>"));
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
