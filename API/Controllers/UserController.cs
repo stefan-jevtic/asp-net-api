@@ -1,6 +1,7 @@
 using System;
 using System.Security.Claims;
 using Application.DTO;
+using Application.Responses;
 using Application.Searches;
 using Application.Services;
 using Application.Services.Interfaces;
@@ -22,7 +23,7 @@ namespace API.Controllers
 
         [HttpGet]
         [Route("Transactions")]
-        public IActionResult Transactions([FromQuery] TransactionSearch search)
+        public ActionResult<PageResponse<TransactionDTO>> Transactions([FromQuery] TransactionSearch search)
         {
             var userId = AuthMiddleware.GetUserId(User);
             var transactions = _service.GetTransactions(search, userId);

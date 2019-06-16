@@ -21,7 +21,7 @@ namespace API.Controllers
         }
 
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<CartDTO> Get()
         {
             var userId = AuthMiddleware.GetUserId(User);
             try

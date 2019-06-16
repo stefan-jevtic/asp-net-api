@@ -1,6 +1,7 @@
 using System.Linq;
 using System.Security.Claims;
 using Application.DTO;
+using Application.Responses;
 using Application.Searches;
 using Application.Services;
 using Application.Services.Interfaces;
@@ -23,7 +24,7 @@ namespace API.Controllers
         }
         
         [HttpGet]
-        public IActionResult Get([FromQuery] OrderSearch search)
+        public ActionResult<PageResponse<OrderDTO>> Get([FromQuery] OrderSearch search)
         {
             var userId = AuthMiddleware.GetUserId(User);
             search.UserId = userId;

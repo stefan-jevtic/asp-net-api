@@ -21,14 +21,14 @@ namespace API.Controllers
         }
         // GET: User
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<UserDTO> Get()
         {
             var users = _service.GetAll();
             return Ok(users);
         }
         
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public ActionResult<UserDTO> Get(int id)
         {
             var user = _service.GetById(id);
             return Ok(user);

@@ -1,4 +1,6 @@
 using System.Security.Claims;
+using Application.DTO;
+using Application.Responses;
 using Application.Searches;
 using Application.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
@@ -20,7 +22,7 @@ namespace API.Controllers
 
         [HttpGet]
         [AllowAnonymous]
-        public IActionResult Get([FromQuery] BookSearch search)
+        public ActionResult<PageResponse<BookDTO>> Get([FromQuery] BookSearch search)
         {
             var books = _service.Execute(search);
             return Ok(books);

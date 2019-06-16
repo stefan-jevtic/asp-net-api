@@ -7,16 +7,18 @@ namespace Application.Services.Implementation
 {
     public class Mailer : IMailer
     {
-        private readonly string HostMail = "stefan.jevtic.45.15@ict.edu.rs";
-        private readonly string HostPassword = "<password>";
+        private readonly string HostMail;
+        private readonly string HostPassword;
         private readonly string MailServer = "smtp.gmail.com";
         private readonly int MailPort = 587;
         private readonly bool secure = false;
         private MimeMessage _message;
         private readonly IUnitOfWork _unitOfWork;
 
-        public Mailer(IUnitOfWork unitOfWork)
+        public Mailer(IUnitOfWork unitOfWork, string mail, string password)
         {
+            HostMail = mail;
+            HostPassword = password;
             _message = new MimeMessage();
             _message.To.Add(new MailboxAddress(HostMail));
             _unitOfWork = unitOfWork;

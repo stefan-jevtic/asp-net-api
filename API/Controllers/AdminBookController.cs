@@ -25,7 +25,7 @@ namespace API.Controllers
         }
         // GET: Book
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<BookDTO> Get()
         {
             var books = _service.GetAll();
             return Ok(books);
@@ -33,7 +33,7 @@ namespace API.Controllers
 
         // GET: Book/Details/5
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public ActionResult<BookDTO> Get(int id)
         {
             var book = _service.GetById(id);
             return Ok(book);

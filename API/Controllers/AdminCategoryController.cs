@@ -19,14 +19,14 @@ namespace API.Controllers
             _service = service;
         }
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<CategoryDTO> Get()
         {
             var categories = _service.GetAll();
             return Ok(categories);
         }
         
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public ActionResult<CategoryDTO> Get(int id)
         {
             var category = _service.GetById(id);
             return Ok(category);

@@ -46,7 +46,7 @@ namespace API
             services.AddTransient<IOrderService, OrderService>();
             services.AddTransient<ITransactionService, TransactionService>();
             services.AddTransient<IWalletService, WalletService>();
-            services.AddTransient<IMailer, Mailer>();
+            services.AddTransient<IMailer>(m => new Mailer(new UnitOfWork(new LibraryContext()), Configuration["Mailer:HostName"], Configuration["Mailer:HostPassword"]));
             services.AddTransient<IImageService, ImageService>();
             services.AddTransient<ICategoryService, CategoryService>();
             services.AddTransient<IAuthorService, AuthorService>();

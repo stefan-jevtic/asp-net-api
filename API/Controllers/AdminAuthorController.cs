@@ -19,14 +19,14 @@ namespace API.Controllers
             _service = service;
         }
         [HttpGet]
-        public IActionResult Get()
+        public ActionResult<AuthorDTO> Get()
         {
             var authors = _service.GetAll();
             return Ok(authors);
         }
         
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public ActionResult<AuthorDTO> Get(int id)
         {
             var author = _service.GetById(id);
             return Ok(author);
