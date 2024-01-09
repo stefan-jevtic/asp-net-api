@@ -24,7 +24,7 @@
     <ItemGroup>
       <PackageReference Include="FluentValidation.AspNetCore" Version="8.4.0" />
       <PackageReference Include="MailKit" Version="2.1.5.1" />
-      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.4.0" />
+      <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="5.7.0" />
     </ItemGroup>
 
 </Project>
